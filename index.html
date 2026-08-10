@@ -9,8 +9,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F59E0B' d='M12 2 4 5v6c0 5.2 3.4 9.6 8 11 4.6-1.4 8-5.8 8-11V5l-8-3z'/%3E%3C/svg%3E" type="image/svg+xml">
 <style>
+
   :root{
     --graphite: #14171B;
     --graphite-2: #1B1F26;
@@ -1058,25 +1059,294 @@
     0%,100%{box-shadow:0 8px 24px rgba(0,0,0,0.4), 0 0 0 0 rgba(37,211,102,0.5);}
     50%{box-shadow:0 8px 24px rgba(0,0,0,0.4), 0 0 0 12px rgba(37,211,102,0);}
   }
+
+/* ============ page-hero (cabeçalho das páginas internas) ============ */
+.page-hero{
+  position:relative;
+  padding:150px 0 60px;
+  background:
+    radial-gradient(ellipse 60% 60% at 85% 0%, rgba(245,158,11,0.14), transparent 60%),
+    var(--graphite);
+  border-bottom:1px solid var(--line);
+}
+.page-hero .section-tag{margin-bottom:10px;}
+.page-hero h1{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(34px,6vw,58px);
+  letter-spacing:0.01em;
+  color:var(--bone);
+  line-height:1.05;
+}
+.page-hero .lead{margin-top:14px; margin-bottom:0;}
+.breadcrumb{
+  font-family:'Space Mono',monospace;
+  font-size:12.5px;
+  color:var(--steel-dim);
+  margin-bottom:18px;
+}
+.breadcrumb a{color:var(--steel);}
+.breadcrumb a:hover{color:var(--amber);}
+
+/* ============ blocos Lema / Tema ============ */
+.valores-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:40px;
+}
+@media(max-width:760px){.valores-grid{grid-template-columns:1fr;}}
+.valor-card{
+  background:var(--graphite-2);
+  border:1px solid var(--line);
+  border-left:3px solid var(--amber);
+  border-radius:10px;
+  padding:28px 26px;
+}
+.valor-card .section-tag{margin-bottom:10px;}
+.valor-lema{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:28px;
+  letter-spacing:0.02em;
+  color:var(--amber-glow);
+  line-height:1.2;
+}
+.valor-card p{color:var(--steel); line-height:1.6; font-size:15.5px;}
+
+/* ============ store toolbar (busca + filtros) ============ */
+.store-toolbar{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+  margin-bottom:32px;
+}
+.store-search{
+  position:relative;
+  max-width:480px;
+}
+.store-search svg{
+  position:absolute;
+  left:16px;top:50%;
+  transform:translateY(-50%);
+  width:18px;height:18px;
+  color:var(--steel-dim);
+  pointer-events:none;
+}
+.store-search input{
+  width:100%;
+  background:var(--graphite-2);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:13px 18px 13px 46px;
+  color:var(--bone);
+  font-family:'Inter',sans-serif;
+  font-size:14.5px;
+  outline:none;
+  transition:border-color .2s ease;
+}
+.store-search input::placeholder{color:var(--steel-dim);}
+.store-search input:focus{border-color:var(--amber);}
+
+.store-filters{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.filter-chip{
+  font-family:'Space Mono',monospace;
+  font-size:12.5px;
+  letter-spacing:0.04em;
+  color:var(--steel);
+  background:var(--graphite-2);
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:9px 16px;
+  cursor:pointer;
+  transition:all .2s ease;
+  white-space:nowrap;
+}
+.filter-chip:hover{border-color:var(--amber); color:var(--bone);}
+.filter-chip.active{
+  background:var(--amber);
+  border-color:var(--amber);
+  color:var(--graphite);
+  font-weight:700;
+}
+
+.store-count{
+  font-family:'Space Mono',monospace;
+  font-size:12.5px;
+  color:var(--steel-dim);
+  margin-bottom:24px;
+}
+
+.store-empty{
+  display:none;
+  text-align:center;
+  padding:60px 20px;
+  color:var(--steel-dim);
+  font-size:15px;
+}
+.store-empty.show{display:block;}
+
+/* selo de categoria no card (visual "loja") */
+.nr-pill{
+  position:absolute;
+  top:14px;left:14px;
+  background:rgba(20,23,27,0.78);
+  backdrop-filter:blur(4px);
+  border:1px solid rgba(255,255,255,0.2);
+  color:#fff;
+  font-family:'Space Mono',monospace;
+  font-size:11px;
+  letter-spacing:0.05em;
+  padding:5px 10px;
+  border-radius:999px;
+  z-index:2;
+}
+.nr-card{ transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease, opacity .2s ease; }
+.nr-card.hide{ display:none; }
+.nr-card:hover{ transform:translateY(-4px); border-color:var(--amber); box-shadow:0 12px 30px rgba(0,0,0,0.35); }
+
+/* ============ modal de detalhe do curso ============ */
+.course-detail-pill{
+  display:inline-block;
+  font-family:'Space Mono',monospace;
+  font-size:12px;
+  letter-spacing:0.06em;
+  color:var(--amber);
+  border:1px solid rgba(245,158,11,0.35);
+  padding:5px 12px;
+  border-radius:999px;
+  margin-bottom:14px;
+}
+.course-detail-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(26px,4vw,34px);
+  letter-spacing:0.01em;
+  color:var(--bone);
+  margin-bottom:16px;
+  line-height:1.1;
+}
+.course-detail-desc{
+  color:var(--steel);
+  font-size:15.5px;
+  line-height:1.65;
+  margin-bottom:22px;
+}
+.course-detail-list{
+  list-style:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  margin-bottom:8px;
+}
+.course-detail-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  color:var(--steel);
+  font-size:14px;
+  line-height:1.5;
+}
+.course-detail-list svg{
+  width:18px;height:18px;
+  color:var(--amber);
+  flex-shrink:0;
+  margin-top:2px;
+}
+.course-detail-cta{
+  margin-top:28px;
+  display:flex;
+  justify-content:center;
+}
+.course-detail-cta .btn{width:100%; justify-content:center;}
+@media(min-width:520px){
+  .course-detail-cta .btn{width:auto;}
+  .course-detail-cta{justify-content:flex-start;}
+}
+.nr-card{cursor:pointer;}
+
+/* ============ página Setores (detalhada) ============ */
+.setor-detail-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:24px;
+  margin-top:40px;
+}
+@media(max-width:760px){.setor-detail-grid{grid-template-columns:1fr;}}
+.setor-detail-card{
+  background:var(--graphite-2);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:28px;
+  transition:border-color .25s ease, transform .25s ease;
+}
+.setor-detail-card:hover{border-color:var(--amber); transform:translateY(-3px);}
+.setor-detail-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:14px;
+}
+.setor-detail-head svg{
+  width:30px;height:30px;
+  color:var(--amber);
+  flex-shrink:0;
+}
+.setor-detail-head h3{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:24px;
+  letter-spacing:0.01em;
+  color:var(--bone);
+}
+.setor-detail-card p{
+  color:var(--steel);
+  font-size:14.5px;
+  line-height:1.6;
+  margin-bottom:16px;
+}
+.setor-course-links{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.setor-course-links a{
+  font-family:'Space Mono',monospace;
+  font-size:11.5px;
+  letter-spacing:0.04em;
+  color:var(--amber);
+  background:rgba(245,158,11,0.08);
+  border:1px solid rgba(245,158,11,0.3);
+  padding:6px 12px;
+  border-radius:999px;
+  transition:all .2s ease;
+}
+.setor-course-links a:hover{background:var(--amber); color:var(--graphite); font-weight:700;}
+
+.setor-all-card{
+  grid-column:1 / -1;
+  text-align:center;
+  background:linear-gradient(160deg, rgba(245,158,11,0.1), transparent);
+  border:1px solid rgba(245,158,11,0.3);
+}
+.setor-all-card h3{color:var(--amber-glow);}
+
 </style>
 </head>
 <body>
 
 <!-- topbar removida a pedido -->
-<div class="topbar-removed" style="display:none;">
-</div>
+<div class="topbar-removed" style="display:none;"></div>
 
 <!-- ================= NAV ================= -->
 <header>
   <nav>
     <!-- brand/logo removido do nav a pedido -->
     <div class="nav-links" id="navLinks">
-      <a href="#sobre">Sobre</a>
-      <a href="#treinamentos">Treinamentos</a>
-      <a href="#setores">Setores</a>
-      <a href="#diferenciais">Diferenciais</a>
-      <a href="https://safesegtreinamentos.github.io/Central/" target="_blank" rel="noopener">Calendário</a>
-      <a href="#validador">Validador</a>
+      <a href="sobre.html">Sobre</a>
+      <a href="treinamentos.html">Treinamentos</a>
+      <a href="diferenciais.html">Diferenciais</a>
+      <a href="https://safesegtreinamentos.github.io/Central/validador/validador.html" target="_blank" rel="noopener">Validador</a>
       <a href="#contato">Contato</a>
       <a href="https://safesegtreinamentos.github.io/Central/" target="_blank" rel="noopener" style="color:var(--amber);">Portal do Cliente →</a>
     </div>
@@ -1122,6 +1392,7 @@
   </div>
 </section>
 
+
 <!-- ================= MARQUEE ================= -->
 <div class="marquee-section">
   <div class="marquee-track" id="marqueeTrack">
@@ -1129,8 +1400,9 @@
   </div>
 </div>
 
-<!-- ================= SOBRE ================= -->
-<section class="sobre" id="sobre">
+
+<!-- ================= SOBRE (teaser) ================= -->
+<section class="sobre" id="sobre-teaser">
   <div class="wrap sobre-grid">
     <div class="sobre-visual reveal">
       <div class="cred-row">
@@ -1147,163 +1419,35 @@
           <div class="ct-value">Validação pública por QR Code</div>
         </div>
       </div>
-      <div class="cred-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
-        <div>
-          <div class="ct-label">Modalidade</div>
-          <div class="ct-value">Turmas in-company ou abertas</div>
-        </div>
-      </div>
-      <div class="cred-row">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.3 7-12a7 7 0 10-14 0c0 5.7 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-        <div>
-          <div class="ct-label">Escritório</div>
-          <div class="ct-value">Dois Vizinhos — PR</div>
-        </div>
-      </div>
     </div>
-
     <div class="sobre-text reveal">
       <div class="section-tag">Quem faz a SafeSeg</div>
-      <p>Instrução técnica de ponta a ponta — não é uma empresa de fachada emitindo certificado. É treinamento aplicado, com responsabilidade técnica assinada.</p>
-      <p>A SafeSeg atende empresas médias e grandes que não podem se dar ao luxo de tratar segurança do trabalho como formalidade — de diversos setores da indústria, construção e serviços — que exigem instrutor presente, conteúdo adaptado à realidade do canteiro e do chão de fábrica, e documentação que resiste a uma fiscalização.</p>
-      <p>Além dos treinamentos, a SafeSeg atua em consultoria documental — PGR, PCMSO e LTCAT — como frente complementar, sempre a partir do mesmo princípio: entender o risco real da operação antes de prescrever qualquer solução.</p>
-      <div class="stat-strip">
-        <div><div class="st-val">NRs</div><div class="st-label">TREINAMENTOS REGULAMENTADOS</div></div>
-        <div><div class="st-val">+</div><div class="st-label">SETORES ATENDIDOS</div></div>
-      </div>
+      <p>Instrução técnica de ponta a ponta — não é uma empresa de fachada emitindo certificado. É treinamento aplicado, com responsabilidade técnica assinada, para empresas que não podem tratar segurança do trabalho como formalidade.</p>
+      <a href="sobre.html" class="btn btn-ghost" style="margin-top:8px;">
+        Conheça a SafeSeg
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- ================= TREINAMENTOS ================= -->
-<section class="treinamentos" id="treinamentos">
+<!-- ================= TREINAMENTOS (teaser) ================= -->
+<section class="treinamentos" id="treinamentos-teaser">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="section-tag">Catálogo de Treinamentos</div>
       <h2 class="section-title">Normas regulamentadoras aplicadas na prática</h2>
-      <p class="section-sub">Cada curso é conduzido com carga horária, conteúdo e material conforme a NR correspondente — turma fechada para sua empresa ou vaga em turma aberta.</p>
+      <p class="section-sub">NR-06, NR-10, NR-12, NR-18, NR-33, NR-35, Brigada de Incêndio, CIPA e consultoria PGR/PCMSO/LTCAT — presencial, semipresencial ou online.</p>
     </div>
-
-    <div class="modal-row reveal">
-      <div class="modal-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 3v4M16 3v4"/></svg>
-        <div>
-          <h4>Presencial</h4>
-          <p>Teoria e prática no seu ambiente de trabalho ou em turma aberta, com o instrutor presente do início ao fim.</p>
-        </div>
-      </div>
-      <div class="modal-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
-        <div>
-          <h4>Semipresencial</h4>
-          <p>Conteúdo teórico à distância e módulo prático presencial — nos cursos em que a norma permite essa divisão.</p>
-        </div>
-      </div>
-      <div class="modal-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H4z"/><path d="M8 20h8M12 16v4"/></svg>
-        <div>
-          <h4>Online (EAD)</h4>
-          <p>Módulo teórico 100% à distância para as NRs que autorizam essa modalidade, com acompanhamento do instrutor.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-grid">
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v18M5 8l7-5 7 5M5 8v8l7 5 7-5V8"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">NR-35</span>
-          <h3>Trabalho em Altura</h3>
-          <p>Capacitação e reciclagem para atividades acima de 2 metros com risco de queda — uso correto de EPI, ancoragem e resgate.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20NR-35%20%E2%80%93%20Trabalho%20em%20Altura." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 118 0c0 2-2 2-2 4"/><circle cx="12" cy="17" r=".6" fill="currentColor"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">NR-33</span>
-          <h3>Espaços Confinados</h3>
-          <p>Formação de trabalhadores autorizados, vigias e supervisores de entrada — atmosfera, ventilação e resgate.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20NR-33%20%E2%80%93%20Espa%C3%A7os%20Confinados." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="12" r="3"/><circle cx="17" cy="7" r="2.4"/><path d="M9 15v3M9 9V6M17 4.6V2M17 9.4v2"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">NR-12</span>
-          <h3>Segurança em Máquinas e Equipamentos</h3>
-          <p>Operação segura, dispositivos de proteção e procedimentos de bloqueio (LOTO) para linhas de produção e maquinário pesado.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20NR-12%20%E2%80%93%20Seguran%C3%A7a%20em%20M%C3%A1quinas%20e%20Equipamentos." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">NR-10</span>
-          <h3>Segurança em Eletricidade</h3>
-          <p>Instalações e serviços em baixa e alta tensão — prevenção de choque, arco elétrico e procedimentos de segurança.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20NR-10%20%E2%80%93%20Seguran%C3%A7a%20em%20Eletricidade." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V9l7-5 7 5v12M9 21v-6h6v6"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">NR-18</span>
-          <h3>Segurança na Construção Civil</h3>
-          <p>Condições e meio ambiente de trabalho na indústria da construção — canteiro, andaimes e proteções coletivas.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20NR-18%20%E2%80%93%20Seguran%C3%A7a%20na%20Constru%C3%A7%C3%A3o%20Civil." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c-2 2-5 3-8 3v7c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V5c-3 0-6-1-8-3z"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">NR-06</span>
-          <h3>Uso de EPI</h3>
-          <p>Seleção, uso correto, conservação e obrigatoriedade dos equipamentos de proteção individual por função.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20NR-06%20%E2%80%93%20Uso%20de%20EPI." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21c4-3 6-6 6-9.5C18 7 15.5 4 13 3c1 2.5-.5 4-1.5 5C10 6.5 10.5 4.5 9.5 3 7 4.5 6 7.5 6 10c0 4 2.5 8 6 11z"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">BRIGADA</span>
-          <h3>Brigada de Incêndio</h3>
-          <p>Prevenção, combate a princípio de incêndio, abandono de área e primeiros socorros conforme NBR 14276.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20Brigada%20de%20Inc%C3%AAndio." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">CIPA</span>
-          <h3>CIPA</h3>
-          <p>Capacitação de membros da Comissão Interna de Prevenção de Acidentes — atribuições, mapa de risco e investigação.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20CIPA." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
-      <div class="nr-card reveal">
-        <div class="nr-banner"><svg class="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 3h6l1 4h4v4l-4 1v6l-4 3-4-3v-6l-4-1V7h4l1-4z"/></svg></div>
-        <div class="nr-body">
-          <span class="nr-code">CONSULTORIA</span>
-          <h3>PGR · PCMSO · LTCAT</h3>
-          <p>Elaboração e atualização de documentação obrigatória de gestão de riscos e saúde ocupacional.</p>
-          <a class="nr-cta" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20me%20inscrever%20no%20treinamento%20Consultoria%20PGR/PCMSO/LTCAT." target="_blank" rel="noopener">Quero me inscrever <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg></a>
-        </div>
-      </div>
-
+    <div style="text-align:center; margin-top:8px;">
+      <a href="treinamentos.html" class="btn btn-primary">
+        Ver todos os treinamentos
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
+      </a>
     </div>
   </div>
 </section>
+
 
 <!-- ================= SETORES ================= -->
 <section class="setores" id="setores">
@@ -1343,57 +1487,19 @@
   </div>
 </section>
 
-<!-- ================= DIFERENCIAIS ================= -->
-<section class="diferenciais" id="diferenciais">
+
+<!-- ================= DIFERENCIAIS (teaser) ================= -->
+<section class="diferenciais" id="diferenciais-teaser">
   <div class="wrap">
     <div class="section-head reveal">
       <div class="section-tag">Por que SafeSeg</div>
       <h2 class="section-title">Diferenciais</h2>
+      <p class="section-sub">Responsável técnico presente, certificado com validação pública, turmas in-company ou abertas, e documentação que resiste à fiscalização.</p>
     </div>
-
-    <div class="dif-grid reveal">
-      <div class="dif-item">
-        <span class="dn">•</span>
-        <div>
-          <h4>Responsável técnico presente</h4>
-          <p>Instrutor com registro ativo (CREA-PR / MTE) conduzindo o treinamento — não terceirizado, não genérico.</p>
-        </div>
-      </div>
-      <div class="dif-item">
-        <span class="dn">•</span>
-        <div>
-          <h4>Certificado com validação pública</h4>
-          <p>Cada certificado emitido pode ser conferido publicamente por QR Code ou CPF, com status de validade em tempo real.</p>
-        </div>
-      </div>
-      <div class="dif-item">
-        <span class="dn">•</span>
-        <div>
-          <h4>Turmas in-company ou abertas</h4>
-          <p>Treinamento na sua planta, com sua rotina e seus riscos reais, ou vaga em turma aberta — conforme a necessidade.</p>
-        </div>
-      </div>
-      <div class="dif-item">
-        <span class="dn">•</span>
-        <div>
-          <h4>Documentação que resiste à fiscalização</h4>
-          <p>PGR, PCMSO e LTCAT elaborados com base no risco real da operação, não em modelo genérico copiado.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= VALIDADOR ================= -->
-<section class="validador" id="validador">
-  <div class="wrap">
-    <div class="validador-box reveal">
-      <svg class="vicon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l8 3v6c0 5-3.4 8.5-8 11-4.6-2.5-8-6-8-11V5l8-3z"/><path d="M9 12l2 2 4-4"/></svg>
-      <h2>Validador Público de Certificados</h2>
-      <p>Consulte a autenticidade de um certificado emitido pela SafeSeg por CPF ou QR Code — gratuito, sem cadastro.</p>
-      <a href="https://safesegtreinamentos.github.io/Central/validador/validador.html" target="_blank" rel="noopener" class="btn btn-primary">
-        Acessar validador
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
+    <div style="text-align:center; margin-top:8px;">
+      <a href="diferenciais.html" class="btn btn-primary">
+        Ver todos os diferenciais
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M9 6l6 6-6 6"/></svg>
       </a>
     </div>
   </div>
@@ -1445,6 +1551,8 @@
   </div>
 </section>
 
+
+
 <!-- ================= FOOTER ================= -->
 <footer>
   <div class="wrap">
@@ -1456,10 +1564,8 @@
       <div class="footer-cols">
         <div class="footer-col">
           <h5>Navegação</h5>
-          <a href="#sobre">Sobre</a>
-          <a href="#treinamentos">Treinamentos</a>
-          <a href="#setores">Setores</a>
-          <a href="https://safesegtreinamentos.github.io/Central/" target="_blank" rel="noopener">Calendário</a>
+          <a href="sobre.html">Sobre</a>
+          <a href="treinamentos.html">Treinamentos</a>
           <a href="#contato">Contato</a>
         </div>
         <div class="footer-col">
@@ -1492,9 +1598,6 @@
     </div>
   </div>
 </footer>
-
-<!-- WhatsApp floating button -->
-<!-- Botões flutuantes de contato -->
 <div class="fab-stack">
   <a class="fab fab-wa" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20os%20treinamentos%20da%20SafeSeg" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
     <span class="fab-tip">WhatsApp</span>
@@ -1510,163 +1613,230 @@
   </a>
 </div>
 
-<!-- ================= MODAL SELEÇÃO DE CURSO ================= -->
-<div class="modal-overlay" id="cursosModal">
-  <div class="modal-panel">
-    <button class="modal-close" id="cursosClose" aria-label="Fechar">✕</button>
-    <h2>Escolha seu treinamento</h2>
-    <p class="modal-sub">Selecione o curso, depois a modalidade — a gente confirma os detalhes com você no WhatsApp.</p>
-
-    <div class="modal-step-label">1. Curso</div>
-    <div class="course-pick-grid" id="coursePickGrid">
-      <div class="course-pick" data-course="NR-35 – Trabalho em Altura">NR-35 · Altura</div>
-      <div class="course-pick" data-course="NR-33 – Espaços Confinados">NR-33 · Confinados</div>
-      <div class="course-pick" data-course="NR-12 – Segurança em Máquinas e Equipamentos">NR-12 · Máquinas</div>
-      <div class="course-pick" data-course="NR-10 – Segurança em Eletricidade">NR-10 · Eletricidade</div>
-      <div class="course-pick" data-course="NR-18 – Segurança na Construção Civil">NR-18 · Construção</div>
-      <div class="course-pick" data-course="NR-06 – Uso de EPI">NR-06 · EPI</div>
-      <div class="course-pick" data-course="Brigada de Incêndio">Brigada de Incêndio</div>
-      <div class="course-pick" data-course="CIPA">CIPA</div>
-      <div class="course-pick" data-course="Consultoria PGR/PCMSO/LTCAT">PGR · PCMSO · LTCAT</div>
-    </div>
-
-    <div class="modal-modality" id="modalModality" hidden>
-      <h3>Modalidade para <span id="modalCourseName"></span></h3>
-      <div class="modality-options">
-        <div class="modality-btn" data-mod="Presencial">
-          <div class="mb-title">Presencial</div>
-          <div class="mb-desc">Na sua empresa ou em turma aberta</div>
-        </div>
-        <div class="modality-btn" data-mod="Semipresencial">
-          <div class="mb-title">Semipresencial</div>
-          <div class="mb-desc">Teoria à distância + prática presencial</div>
-        </div>
-        <div class="modality-btn" data-mod="Online">
-          <div class="mb-title">Online</div>
-          <div class="mb-desc">Módulo teórico 100% a distância</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal-confirm-row">
-      <a class="btn btn-primary" id="modalConfirm" href="#" target="_blank" rel="noopener" hidden>
-        Confirmar no WhatsApp
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
-
 <script>
+
   // ===== mobile menu =====
   const burger = document.getElementById('burger');
   const navLinks = document.getElementById('navLinks');
-  burger.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
-  });
-  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  if (burger && navLinks) {
+    burger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+  }
 
   // ===== year =====
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
 
   // ===== scroll reveal =====
   const revealEls = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){
-        entry.target.classList.add('in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, {threshold:0.15});
-  revealEls.forEach(el => io.observe(el));
+  if (revealEls.length) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  }
 
-  // ===== marquee content (duplicated for seamless loop) =====
+  // ===== marquee content (duplicated for seamless loop) — só existe na Home =====
   const marqueeItems = [
     'NR-06 · EPI', 'NR-10 · ELETRICIDADE', 'NR-12 · MÁQUINAS E EQUIPAMENTOS',
     'NR-18 · CONSTRUÇÃO CIVIL', 'NR-33 · ESPAÇOS CONFINADOS', 'NR-35 · TRABALHO EM ALTURA',
     'BRIGADA DE INCÊNDIO', 'CIPA', 'PGR · PCMSO · LTCAT'
   ];
   const track = document.getElementById('marqueeTrack');
-  const buildSet = () => marqueeItems.map(t => `<div class="marquee-item"><b>◆</b> ${t}</div>`).join('');
-  track.innerHTML = buildSet() + buildSet();
+  if (track) {
+    const buildSet = () => marqueeItems.map(t => `<div class="marquee-item"><b>◆</b> ${t}</div>`).join('');
+    track.innerHTML = buildSet() + buildSet();
+  }
 
-  // ===== hero embers =====
+  // ===== hero embers — só existe na Home =====
   const embersWrap = document.getElementById('embers');
-  const emberCount = window.innerWidth < 700 ? 10 : 20;
-  for(let i=0;i<emberCount;i++){
-    const e = document.createElement('div');
-    e.className = 'ember';
-    e.style.left = Math.random()*100 + '%';
-    e.style.animationDuration = (7 + Math.random()*8) + 's';
-    e.style.animationDelay = (Math.random()*10) + 's';
-    e.style.opacity = 0.3 + Math.random()*0.5;
-    embersWrap.appendChild(e);
-  }
-
-  // ===== modal seleção de curso =====
-  const cursosModal = document.getElementById('cursosModal');
-  const cursosClose = document.getElementById('cursosClose');
-  const coursePickGrid = document.getElementById('coursePickGrid');
-  const modalModality = document.getElementById('modalModality');
-  const modalCourseName = document.getElementById('modalCourseName');
-  const modalConfirm = document.getElementById('modalConfirm');
-  let selectedCourse = null;
-  let selectedModality = null;
-
-  function openCursosModal(){
-    cursosModal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeCursosModal(){
-    cursosModal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-
-  document.querySelectorAll('a[href="#treinamentos"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      e.preventDefault();
-      navLinks.classList.remove('open');
-      openCursosModal();
-    });
-  });
-
-  cursosClose.addEventListener('click', closeCursosModal);
-  cursosModal.addEventListener('click', (e) => {
-    if(e.target === cursosModal) closeCursosModal();
-  });
-
-  function updateConfirmLink(){
-    if(selectedCourse && selectedModality){
-      const msg = `Olá, quero me inscrever no treinamento ${selectedCourse}, na modalidade ${selectedModality}.`;
-      modalConfirm.href = 'https://wa.me/5546999203945?text=' + encodeURIComponent(msg);
-      modalConfirm.hidden = false;
-    } else {
-      modalConfirm.hidden = true;
+  if (embersWrap) {
+    const emberCount = window.innerWidth < 700 ? 10 : 20;
+    for (let i = 0; i < emberCount; i++) {
+      const e = document.createElement('div');
+      e.className = 'ember';
+      e.style.left = Math.random() * 100 + '%';
+      e.style.animationDuration = (7 + Math.random() * 8) + 's';
+      e.style.animationDelay = (Math.random() * 10) + 's';
+      e.style.opacity = 0.3 + Math.random() * 0.5;
+      embersWrap.appendChild(e);
     }
   }
 
-  coursePickGrid.querySelectorAll('.course-pick').forEach(el => {
-    el.addEventListener('click', () => {
-      coursePickGrid.querySelectorAll('.course-pick').forEach(x => x.classList.remove('selected'));
-      el.classList.add('selected');
-      selectedCourse = el.dataset.course;
-      selectedModality = null;
-      modalModality.querySelectorAll('.modality-btn').forEach(x => x.classList.remove('selected'));
-      modalCourseName.textContent = selectedCourse;
-      modalModality.hidden = false;
-      updateConfirmLink();
-    });
-  });
+  // ===== loja de treinamentos: busca + filtros — só existe na página Treinamentos =====
+  const storeFilters = document.getElementById('storeFilters');
+  const courseGrid = document.getElementById('courseGrid');
+  if (storeFilters && courseGrid) {
+    const searchInput = document.getElementById('courseSearch');
+    const storeCount = document.getElementById('storeCount');
+    const storeEmpty = document.getElementById('storeEmpty');
+    const cards = Array.from(courseGrid.querySelectorAll('.nr-card'));
+    let activeFilter = 'todos';
 
-  modalModality.querySelectorAll('.modality-btn').forEach(el => {
-    el.addEventListener('click', () => {
-      modalModality.querySelectorAll('.modality-btn').forEach(x => x.classList.remove('selected'));
-      el.classList.add('selected');
-      selectedModality = el.dataset.mod;
-      updateConfirmLink();
+    function applyStoreFilters() {
+      const term = (searchInput ? searchInput.value : '').trim().toLowerCase();
+      let visible = 0;
+      cards.forEach(card => {
+        const cat = card.dataset.category || '';
+        const search = card.dataset.search || '';
+        const matchesCategory = activeFilter === 'todos' || cat === activeFilter;
+        const matchesSearch = term === '' || search.includes(term);
+        const show = matchesCategory && matchesSearch;
+        card.classList.toggle('hide', !show);
+        if (show) visible++;
+      });
+      if (storeCount) {
+        storeCount.textContent = visible === 1
+          ? '1 treinamento disponível'
+          : `${visible} treinamentos disponíveis`;
+      }
+      if (storeEmpty) storeEmpty.classList.toggle('show', visible === 0);
+    }
+
+    storeFilters.querySelectorAll('.filter-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        storeFilters.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeFilter = chip.dataset.filter;
+        applyStoreFilters();
+      });
     });
-  });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', applyStoreFilters);
+    }
+
+    // ===== permite chegar já filtrado via link externo, ex: treinamentos.html?filter=nr18 =====
+    const urlParams = new URLSearchParams(window.location.search);
+    const requestedFilter = urlParams.get('filter');
+    if (requestedFilter) {
+      const targetChip = storeFilters.querySelector(`.filter-chip[data-filter="${requestedFilter}"]`);
+      if (targetChip) {
+        storeFilters.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
+        targetChip.classList.add('active');
+        activeFilter = requestedFilter;
+        targetChip.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      }
+    }
+    applyStoreFilters();
+  }
+
+  // ===== modal de detalhe do curso: clique no card abre informações completas =====
+  const courseDetailModal = document.getElementById('courseDetailModal');
+  if (courseDetailModal) {
+    const detailClose = document.getElementById('courseDetailClose');
+    const detailCode = document.getElementById('courseDetailCode');
+    const detailTitle = document.getElementById('courseDetailTitle');
+    const detailDesc = document.getElementById('courseDetailDesc');
+    const detailWa = document.getElementById('courseDetailWa');
+
+    function openCourseDetail(card) {
+      detailCode.textContent = card.dataset.code || '';
+      detailTitle.textContent = card.dataset.title || '';
+      detailDesc.textContent = card.dataset.full || '';
+      detailWa.href = card.dataset.wa || '#';
+      courseDetailModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCourseDetail() {
+      courseDetailModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.nr-card').forEach(card => {
+      card.addEventListener('click', (e) => {
+        // se o clique foi no próprio botão "Quero me inscrever", deixa ir direto pro WhatsApp
+        if (e.target.closest('.nr-cta')) return;
+        openCourseDetail(card);
+      });
+    });
+
+    if (detailClose) detailClose.addEventListener('click', closeCourseDetail);
+    courseDetailModal.addEventListener('click', (e) => {
+      if (e.target === courseDetailModal) closeCourseDetail();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCourseDetail();
+    });
+  }
+
+  // ===== modal seleção de curso — só existe nas páginas com Treinamentos =====
+  const cursosModal = document.getElementById('cursosModal');
+  if (cursosModal) {
+    const cursosClose = document.getElementById('cursosClose');
+    const coursePickGrid = document.getElementById('coursePickGrid');
+    const modalModality = document.getElementById('modalModality');
+    const modalCourseName = document.getElementById('modalCourseName');
+    const modalConfirm = document.getElementById('modalConfirm');
+    let selectedCourse = null;
+    let selectedModality = null;
+
+    function openCursosModal() {
+      cursosModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeCursosModal() {
+      cursosModal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('[data-open-cursos]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (navLinks) navLinks.classList.remove('open');
+        openCursosModal();
+      });
+    });
+
+    if (cursosClose) cursosClose.addEventListener('click', closeCursosModal);
+    cursosModal.addEventListener('click', (e) => {
+      if (e.target === cursosModal) closeCursosModal();
+    });
+
+    function updateConfirmLink() {
+      if (selectedCourse && selectedModality) {
+        const msg = `Olá, quero me inscrever no treinamento ${selectedCourse}, na modalidade ${selectedModality}.`;
+        modalConfirm.href = 'https://wa.me/5546999203945?text=' + encodeURIComponent(msg);
+        modalConfirm.hidden = false;
+      } else {
+        modalConfirm.hidden = true;
+      }
+    }
+
+    if (coursePickGrid) {
+      coursePickGrid.querySelectorAll('.course-pick').forEach(el => {
+        el.addEventListener('click', () => {
+          coursePickGrid.querySelectorAll('.course-pick').forEach(x => x.classList.remove('selected'));
+          el.classList.add('selected');
+          selectedCourse = el.dataset.course;
+          selectedModality = null;
+          modalModality.querySelectorAll('.modality-btn').forEach(x => x.classList.remove('selected'));
+          modalCourseName.textContent = selectedCourse;
+          modalModality.hidden = false;
+          updateConfirmLink();
+        });
+      });
+    }
+
+    if (modalModality) {
+      modalModality.querySelectorAll('.modality-btn').forEach(el => {
+        el.addEventListener('click', () => {
+          modalModality.querySelectorAll('.modality-btn').forEach(x => x.classList.remove('selected'));
+          el.classList.add('selected');
+          selectedModality = el.dataset.mod;
+          updateConfirmLink();
+        });
+      });
+    }
+  }
+
 </script>
 
 </body>
