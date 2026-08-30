@@ -209,10 +209,12 @@ async function iniciarCheckout(){
 
   if(CONFIG.API_BASE){
     try{
+      let buyer = {};
+      try{ buyer = JSON.parse(sessionStorage.getItem('safeseg_buyer')) || {}; }catch(e){}
       const resp = await fetch(`${CONFIG.API_BASE}?action=checkout`, {
         method:"POST",
         headers:{"Content-Type":"text/plain"},
-        body: JSON.stringify({items})
+        body: JSON.stringify({items, buyer})
       });
       const data = await resp.json();
       if(data && data.init_point){

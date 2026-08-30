@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matrícula confirmada — SafeSeg Online</title>
+<title>Sua matrícula — SafeSeg Online</title>
 <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
@@ -18,18 +18,93 @@
 </header>
 
 <div class="container" style="padding:90px 0; max-width:560px; text-align:center;">
-  <div style="width:64px;height:64px;border-radius:50%;background:rgba(47,168,79,.15);border:1px solid var(--safe);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
-    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2FA84F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+
+  <div id="stateChecking">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(245,158,11,.12);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10" stroke-opacity=".3"/><path d="M12 2a10 10 0 0 1 10 10"><animateTransform attributeName="transform" type="rotate" from="0 12 12" to="360 12 12" dur="0.8s" repeatCount="indefinite"/></path></svg>
+    </div>
+    <h1 class="course-title" style="font-size:32px;">Confirmando seu pagamento…</h1>
+    <p style="color:var(--graphite-200); font-size:15px;">Isso leva só alguns segundos. Não feche esta página.</p>
   </div>
-  <h1 class="course-title" style="font-size:36px;">Matrícula confirmada!</h1>
-  <p style="color:var(--graphite-200); font-size:15px;">Recebemos seu pagamento. Em instantes você recebe por WhatsApp e e-mail o acesso ao(s) treinamento(s) e as instruções para começar. Qualquer dúvida, é só chamar a equipe SafeSeg.</p>
-  <a href="index.html" class="btn btn-primary" style="display:inline-flex; width:auto; padding:13px 26px; margin-top:20px;">Voltar ao catálogo</a>
+
+  <div id="stateApproved" style="display:none;">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(47,168,79,.15);border:1px solid var(--safe);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#2FA84F" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+    <h1 class="course-title" style="font-size:34px;">Matrícula confirmada!</h1>
+    <p style="color:var(--graphite-200); font-size:15px;">Pagamento aprovado. Em instantes você recebe por WhatsApp e e-mail o acesso ao(s) treinamento(s) e as instruções para começar.</p>
+    <a href="index.html" class="btn btn-primary" style="display:inline-flex; width:auto; padding:13px 26px; margin-top:20px;">Voltar ao catálogo</a>
+  </div>
+
+  <div id="statePending" style="display:none;">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(245,158,11,.15);border:1px solid var(--amber);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    <h1 class="course-title" style="font-size:32px;">Pagamento em processamento</h1>
+    <p style="color:var(--graphite-200); font-size:15px;">Recebemos seu pedido e estamos aguardando a confirmação (comum em Pix e boleto). Assim que for aprovado, avisamos por WhatsApp e e-mail.</p>
+    <a href="index.html" class="btn btn-ghost" style="display:inline-flex; width:auto; padding:13px 26px; margin-top:20px;">Voltar ao catálogo</a>
+  </div>
+
+  <div id="stateFailed" style="display:none;">
+    <div style="width:64px;height:64px;border-radius:50%;background:rgba(219,75,63,.15);border:1px solid var(--danger);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#DB4B3F" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <h1 class="course-title" style="font-size:32px;">Não conseguimos confirmar o pagamento</h1>
+    <p style="color:var(--graphite-200); font-size:15px;">Nenhum valor foi cobrado com sucesso. Você pode tentar novamente ou falar com a gente pelo WhatsApp.</p>
+    <a href="carrinho.html" class="btn btn-primary" style="display:inline-flex; width:auto; padding:13px 26px; margin-top:20px;">Tentar novamente</a>
+  </div>
+
 </div>
 
 <script src="assets/app.js"></script>
 <script>
 document.getElementById('logoSlot').innerHTML = svgLogoMark();
-localStorage.removeItem('safeseg_cart_v1');
+
+const params = new URLSearchParams(location.search);
+const orderId = params.get('order');
+
+function show(id){
+  ['stateChecking','stateApproved','statePending','stateFailed'].forEach(s=>{
+    document.getElementById(s).style.display = (s===id) ? 'block' : 'none';
+  });
+}
+
+async function checkStatus(attempt){
+  if(!CONFIG.API_BASE || !orderId){
+    // sem backend configurado ainda: fallback simples (Nível 1)
+    show('stateApproved');
+    localStorage.removeItem('safeseg_cart_v1');
+    return;
+  }
+  try{
+    const resp = await fetch(`${CONFIG.API_BASE}?action=order_status&order=${encodeURIComponent(orderId)}`);
+    const data = await resp.json();
+    if(data.status === 'aprovado'){
+      show('stateApproved');
+      localStorage.removeItem('safeseg_cart_v1');
+      return;
+    }
+    if(data.status === 'recusado' || data.status === 'cancelado'){
+      show('stateFailed');
+      return;
+    }
+    // ainda pendente — tenta de novo por até ~30s (webhook pode demorar alguns segundos)
+    if(attempt < 10){
+      setTimeout(()=>checkStatus(attempt+1), 3000);
+    }else{
+      show('statePending');
+    }
+  }catch(e){
+    console.error(e);
+    if(attempt < 10){
+      setTimeout(()=>checkStatus(attempt+1), 3000);
+    }else{
+      show('statePending');
+    }
+  }
+}
+
+checkStatus(0);
 </script>
 </body>
 </html>
