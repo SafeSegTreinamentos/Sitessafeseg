@@ -8,7 +8,7 @@
 // e o carrinho finaliza via WhatsApp/manual.
 // -------------------------------------------------------------------
 const CONFIG = {
-  API_BASE: "", // ex: "https://script.google.com/macros/s/AKfycb.../exec"
+  API_BASE: "https://script.google.com/macros/s/AKfycbz97P3PszMSfpaA9FJNRdbvFMI_IsKudx7yeOVKu6Olv0TMmFIba956ybJGE10o89Gd/exec", // ex: "https://script.google.com/macros/s/AKfycb.../exec"
   CURSOS_JSON_FALLBACK: "cursos.json",
   WHATSAPP_NUMERO: "5546999203945", // WhatsApp real da SafeSeg
   NOME_LOJA: "SafeSeg Online",
