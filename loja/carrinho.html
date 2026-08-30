@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carrinho e matrícula — SafeSeg Online</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .checkout-layout{display:grid; grid-template-columns:1fr 380px; gap:36px; padding:44px 0 90px; align-items:start;}
+  @media (max-width:860px){.checkout-layout{grid-template-columns:1fr;}}
+  .form-card{background:var(--graphite-800); border:1px solid var(--graphite-700); border-radius:var(--r-lg); padding:26px;}
+  .form-card h2{font-family:var(--font-display); font-size:24px; margin:0 0 4px;}
+  .form-card .hint{color:var(--graphite-400); font-size:13px; margin:0 0 20px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block; font-size:12.5px; font-weight:600; color:var(--graphite-200); margin-bottom:6px;}
+  .field input, .field select{
+    width:100%; background:var(--graphite-900); border:1px solid var(--graphite-600); color:var(--paper);
+    padding:11px 13px; border-radius:var(--r-sm); font-family:var(--font-body); font-size:14px;
+  }
+  .field input:focus, .field select:focus{outline:none; border-color:var(--amber);}
+  .field-row{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .line-list{border-top:1px solid var(--graphite-700); margin-top:6px;}
+  .line{display:flex; justify-content:space-between; gap:10px; padding:14px 0; border-bottom:1px solid var(--graphite-700); font-size:13.5px;}
+  .line .ln-name{color:var(--paper); font-weight:600;}
+  .line .ln-meta{color:var(--graphite-400); font-family:var(--font-mono); font-size:11px; margin-top:3px;}
+  .line .ln-qty{display:flex; align-items:center; gap:0; border:1px solid var(--graphite-600); border-radius:var(--r-sm); overflow:hidden; height:28px;}
+  .line .ln-qty button{background:var(--graphite-700); color:var(--paper); border:none; width:26px; font-size:15px;}
+  .line .ln-qty span{width:28px; text-align:center; font-family:var(--font-mono); font-size:12px;}
+  .summary-card{background:var(--graphite-800); border:1px solid var(--graphite-700); border-radius:var(--r-lg); padding:24px; position:sticky; top:100px;}
+  .summary-row{display:flex; justify-content:space-between; font-size:13.5px; color:var(--graphite-200); margin-bottom:10px;}
+  .summary-total{display:flex; justify-content:space-between; align-items:center; margin:16px 0 20px; padding-top:16px; border-top:1px solid var(--graphite-700);}
+  .summary-total b{font-family:var(--font-display); font-size:30px; color:var(--amber-300);}
+  .pay-icons{display:flex; gap:10px; margin-top:16px; align-items:center; color:var(--graphite-400); font-size:11.5px;}
+</style>
+</head>
+<body>
+
+<div class="hazard-rule"></div>
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="index.html" class="brand">
+      <span id="logoSlot"></span>
+      <div class="brand-text">
+        <span class="name">SafeSeg</span>
+        <span class="sub">Online</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a class="nav-link" href="index.html">← Continuar comprando</a>
+    </div>
+  </div>
+</header>
+
+<div class="container" style="padding-top:38px;">
+  <div class="breadcrumb"><a href="index.html">Catálogo</a> <span>/</span> <span>Carrinho</span></div>
+  <h1 class="course-title" style="font-size:38px;">Finalizar matrícula</h1>
+</div>
+
+<div class="container checkout-layout" id="checkoutLayout">
+  <div class="form-card">
+    <h2>Itens do pedido</h2>
+    <p class="hint">Confira as quantidades antes de prosseguir.</p>
+    <div id="lineList" class="line-list"></div>
+  </div>
+
+  <div>
+    <div class="form-card" style="margin-bottom:20px;">
+      <h2>Seus dados</h2>
+      <p class="hint">Usados para emitir o certificado e enviar o acesso ao curso.</p>
+      <form id="buyerForm">
+        <div class="field"><label>Nome completo</label><input type="text" name="nome" required></div>
+        <div class="field-row">
+          <div class="field"><label>CPF</label><input type="text" name="cpf" required placeholder="000.000.000-00"></div>
+          <div class="field"><label>WhatsApp</label><input type="text" name="telefone" required placeholder="(00) 00000-0000"></div>
+        </div>
+        <div class="field"><label>E-mail</label><input type="email" name="email" required></div>
+        <div class="field"><label>Empresa (opcional)</label><input type="text" name="empresa"></div>
+      </form>
+    </div>
+
+    <div class="summary-card">
+      <div class="summary-row"><span>Subtotal</span><span id="sumSubtotal">R$ 0,00</span></div>
+      <div class="summary-total"><span>Total</span><b id="sumTotal">R$ 0,00</b></div>
+      <button class="btn btn-primary" id="checkoutBtn" onclick="finalizarPedido()">Pagar com Mercado Pago</button>
+      <div class="pay-icons">Pix · Cartão de crédito · Boleto, via Mercado Pago</div>
+    </div>
+  </div>
+</div>
+
+<div class="container empty-state" id="cartEmptyMsg" style="display:none; margin:20px 0 90px;">
+  <b>Seu carrinho está vazio</b>
+  <a href="index.html" style="color:var(--amber-300)">Ver catálogo de treinamentos</a>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> SafeSeg Segurança do Trabalho</span>
+    <span>Dois Vizinhos/PR</span>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+document.getElementById('logoSlot').innerHTML = svgLogoMark();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function renderLines(){
+  const items = readCart();
+  const layout = document.getElementById('checkoutLayout');
+  const empty = document.getElementById('cartEmptyMsg');
+  if(items.length===0){ layout.style.display='none'; empty.style.display='block'; return; }
+  layout.style.display='grid'; empty.style.display='none';
+
+  document.getElementById('lineList').innerHTML = items.map(i=>`
+    <div class="line" data-slug="${i.slug}">
+      <div>
+        <div class="ln-name">${i.nome}</div>
+        <div class="ln-meta">${catInfo(i.categoria).label} · ${i.carga}h · R$ ${brl(i.valor)} cada</div>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
+        <div class="ln-qty">
+          <button data-act="dec">–</button><span>${i.qty}</span><button data-act="inc">+</button>
+        </div>
+        <div style="font-family:var(--font-display); font-size:16px; color:var(--amber-300)">R$ ${brl(i.qty*i.valor)}</div>
+      </div>
+    </div>
+  `).join('');
+
+  document.querySelectorAll('.line').forEach(row=>{
+    const slug = row.dataset.slug;
+    const it = items.find(i=>i.slug===slug);
+    row.querySelector('[data-act="inc"]').onclick = ()=>setQty(slug, it.qty+1);
+    row.querySelector('[data-act="dec"]').onclick = ()=>setQty(slug, it.qty-1);
+  });
+
+  document.getElementById('sumSubtotal').textContent = `R$ ${brl(cartTotal())}`;
+  document.getElementById('sumTotal').textContent = `R$ ${brl(cartTotal())}`;
+}
+document.addEventListener('cart:changed', renderLines);
+renderLines();
+
+async function finalizarPedido(){
+  const form = document.getElementById('buyerForm');
+  if(!form.reportValidity()) return;
+  const dados = Object.fromEntries(new FormData(form).entries());
+  sessionStorage.setItem('safeseg_buyer', JSON.stringify(dados));
+  await iniciarCheckout();
+}
+</script>
+</body>
+</html>

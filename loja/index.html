@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeSeg Online — Treinamentos NR com Certificado</title>
+<meta name="description" content="Treinamentos de Segurança do Trabalho 100% online, com certificado válido para o eSocial. Matrícula imediata e pagamento seguro.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="hazard-rule"></div>
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="index.html" class="brand">
+      <span id="logoSlot"></span>
+      <div class="brand-text">
+        <span class="name">SafeSeg</span>
+        <span class="sub">Online</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a class="nav-link" href="index.html">Catálogo</a>
+      <a class="nav-link" href="carrinho.html">Meus dados</a>
+      <button class="cart-btn" data-open-cart>
+        <span id="cartIconSlot"></span>
+        <span>Carrinho</span>
+        <span class="cart-count" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow">Loja Online · Certificado Válido para o eSocial</div>
+    <h1>Treinamento de <em>NR</em><br>sem sair da obra.</h1>
+    <p>Compre agora, assista quando puder e receba o certificado assinado digitalmente — pronto para envio ao eSocial. Mais de 80 cursos, matrícula em minutos.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b id="statTotal">—</b><span>Cursos disponíveis</span></div>
+      <div class="hero-stat"><b>100%</b><span>Online</span></div>
+      <div class="hero-stat"><b>Dois Vizinhos/PR</b><span>Emissão local</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="filters-bar">
+  <div class="container">
+    <div class="filters-row">
+      <div class="search-box">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6B7280" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input id="searchInput" type="text" placeholder="Buscar por nome do curso ou norma (ex: NR-35, altura, elétrica)…">
+      </div>
+    </div>
+    <div class="chip-scroll" id="chipRow" style="margin-top:12px;"></div>
+  </div>
+</div>
+
+<section class="catalog-section">
+  <div class="container">
+    <div id="catalogGrid" class="catalog-grid"></div>
+    <div id="emptyState" class="empty-state" style="display:none;">
+      <b>Nenhum curso encontrado</b>
+      Tente outro termo de busca ou remova o filtro de categoria.
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>SafeSeg Segurança do Trabalho</h4>
+      <p>Treinamentos de NR online e presenciais, consultoria em PGR, PCMSO e LTCAT. Atendimento em Dois Vizinhos/PR e região.</p>
+    </div>
+    <div>
+      <h4>Ajuda</h4>
+      <p><a href="carrinho.html">Meu carrinho</a><br>
+      <a href="#" id="footWhats">Fale no WhatsApp</a><br>
+      <a href="admin.html">Área administrativa</a></p>
+    </div>
+    <div>
+      <h4>Certificação</h4>
+      <p>Certificados emitidos conforme carga horária da norma, prontos para registro no eSocial.</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> SafeSeg Segurança do Trabalho</span>
+    <span>Dois Vizinhos/PR</span>
+  </div>
+</footer>
+
+<!-- Cart drawer -->
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Seu carrinho</h3>
+    <button class="cart-close" id="cartClose">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total-row">
+      <span class="lbl">Total</span>
+      <span class="val" id="cartTotalVal">R$ 0,00</span>
+    </div>
+    <button class="btn btn-primary" id="checkoutBtn" onclick="iniciarCheckout()">Finalizar matrícula</button>
+    <a href="index.html" class="btn btn-ghost" style="display:block; text-align:center;">Continuar escolhendo cursos</a>
+  </div>
+</aside>
+
+<script src="assets/app.js"></script>
+<script>
+document.getElementById('logoSlot').innerHTML = svgLogoMark();
+document.getElementById('cartIconSlot').innerHTML = iconCart();
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('footWhats').href = `https://wa.me/${CONFIG.WHATSAPP_NUMERO}`;
+
+let ALL_CURSOS = [];
+let activeCat = 'todos';
+
+function renderChips(cats){
+  const row = document.getElementById('chipRow');
+  const all = [{key:'todos', label:'Todos'}, ...cats.map(c=>({key:c, label:catInfo(c).label}))];
+  row.innerHTML = all.map(c => `<button class="chip ${c.key===activeCat?'active':''}" data-cat="${c.key}">${c.label}</button>`).join('');
+  row.querySelectorAll('.chip').forEach(ch=>{
+    ch.addEventListener('click', ()=>{ activeCat = ch.dataset.cat; renderChips(cats); renderGrid(); });
+  });
+}
+
+function courseCard(c){
+  const ci = catInfo(c.categoria);
+  return `
+  <a class="course-card" href="curso.html?slug=${c.slug}">
+    <div class="risk-bar" style="background:${ci.color}"></div>
+    <div class="card-body">
+      <div class="card-top">
+        <span class="cat-tag" style="background:${ci.color}22; color:${ci.color}; border:1px solid ${ci.color}55">${ci.label}</span>
+        <span class="card-hours">${iconClock()} ${c.carga_horaria}h</span>
+      </div>
+      <div class="card-title">${c.nome}</div>
+      <div class="card-bottom">
+        <div class="card-price">
+          <div class="label">Matrícula</div>
+          <div class="value"><small>R$</small>${brl(c.valor_venda)}</div>
+        </div>
+        <button class="icon-btn" title="Adicionar ao carrinho" data-add="${c.slug}" onclick="event.preventDefault(); event.stopPropagation(); quickAdd('${c.slug}')">
+          ${iconCart()}
+        </button>
+      </div>
+    </div>
+  </a>`;
+}
+
+async function quickAdd(slug){
+  const c = ALL_CURSOS.find(x=>x.slug===slug);
+  if(c){ addToCart(c); openCart(); }
+}
+
+function renderGrid(){
+  const term = document.getElementById('searchInput').value.trim().toLowerCase();
+  let list = ALL_CURSOS.filter(c=>c.ativo);
+  if(activeCat !== 'todos') list = list.filter(c=>c.categoria===activeCat);
+  if(term) list = list.filter(c=> c.nome.toLowerCase().includes(term) || c.categoria.toLowerCase().includes(term));
+  const grid = document.getElementById('catalogGrid');
+  const empty = document.getElementById('emptyState');
+  if(list.length === 0){ grid.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display='none';
+  grid.innerHTML = list.map(courseCard).join('');
+}
+
+(async function init(){
+  ALL_CURSOS = await getCursos();
+  const ativos = ALL_CURSOS.filter(c=>c.ativo);
+  document.getElementById('statTotal').textContent = ativos.length;
+  const cats = [...new Set(ativos.map(c=>c.categoria))].sort();
+  renderChips(cats);
+  renderGrid();
+  document.getElementById('searchInput').addEventListener('input', renderGrid);
+})();
+</script>
+</body>
+</html>

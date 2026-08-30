@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — SafeSeg Online</title>
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .admin-wrap{padding:34px 0 90px;}
+  .notice{
+    background:var(--graphite-800); border:1px solid var(--graphite-600); border-left:3px solid var(--amber);
+    border-radius:var(--r-sm); padding:14px 16px; font-size:13px; color:var(--graphite-200); margin-bottom:22px;
+  }
+  .notice b{color:var(--amber-300);}
+</style>
+</head>
+<body>
+
+<div class="hazard-rule"></div>
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="index.html" class="brand">
+      <span id="logoSlot"></span>
+      <div class="brand-text">
+        <span class="name">SafeSeg</span>
+        <span class="sub">Painel Administrativo</span>
+      </div>
+    </a>
+    <a class="nav-link" href="index.html">Ver loja →</a>
+  </div>
+</header>
+
+<!-- Tela de senha -->
+<div class="admin-lock" id="lockScreen">
+  <div class="lock-card">
+    <span id="logoSlot2"></span>
+    <h2 style="font-family:var(--font-display); font-size:26px; margin:14px 0 4px;">Acesso restrito</h2>
+    <p style="color:var(--graphite-400); font-size:13px; margin:0;">Digite a senha de administrador para gerenciar os cursos ativos na loja.</p>
+    <input type="password" id="pwdInput" placeholder="SENHA" maxlength="20">
+    <button class="btn btn-primary" onclick="tryLogin()">Entrar</button>
+    <p id="pwdError" style="color:var(--danger); font-size:12.5px; margin-top:10px; display:none;">Senha incorreta.</p>
+  </div>
+</div>
+
+<!-- Painel -->
+<div class="container admin-wrap" id="adminPanel" style="display:none;">
+  <div class="notice">
+    <b>Como funciona:</b> desative um curso aqui para tirá-lo imediatamente da loja (ele some do catálogo e a página dele fica indisponível). Ative de novo a qualquer momento — nada é apagado. Esta senha protege apenas o acesso ao painel; para o controle valer para todos os visitantes do site (e não só neste navegador), configure a API do Google Sheets — veja o <b>LEIA-ME.md</b>.
+  </div>
+
+  <div class="admin-topbar">
+    <div>
+      <h1 style="font-family:var(--font-display); font-size:32px; margin:0;">Cursos da loja</h1>
+      <span class="badge-count" id="countBadge">— cursos · — ativos</span>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <span class="save-pill" id="savePill">sincronizado</span>
+      <div class="search-box" style="width:260px;">
+        <input id="adminSearch" placeholder="Buscar curso…">
+      </div>
+    </div>
+  </div>
+
+  <div class="admin-table-wrap">
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th style="width:60px;">Ativo</th>
+          <th>Curso</th>
+          <th style="width:110px;">Categoria</th>
+          <th style="width:70px;">Carga</th>
+          <th style="width:110px;">eSocial</th>
+          <th style="width:110px;">Venda</th>
+          <th style="width:70px;"></th>
+        </tr>
+      </thead>
+      <tbody id="adminTbody"></tbody>
+    </table>
+  </div>
+</div>
+
+<script src="assets/app.js"></script>
+<script>
+document.getElementById('logoSlot').innerHTML = svgLogoMark();
+document.getElementById('logoSlot2').innerHTML = svgLogoMark();
+
+// Senha simples local — troque abaixo. Protege só o acesso ao painel neste navegador.
+const ADMIN_PASS = "safeseg2026";
+const SESSION_KEY = "safeseg_admin_ok";
+const OVERRIDES_KEY = "safeseg_overrides_v1"; // usado quando não há API_BASE configurado
+
+function tryLogin(){
+  const val = document.getElementById('pwdInput').value;
+  if(val === ADMIN_PASS){
+    sessionStorage.setItem(SESSION_KEY, "1");
+    showPanel();
+  }else{
+    document.getElementById('pwdError').style.display='block';
+  }
+}
+document.getElementById('pwdInput').addEventListener('keydown', e=>{ if(e.key==='Enter') tryLogin(); });
+
+let ALL = [];
+
+function readOverrides(){
+  try{ return JSON.parse(localStorage.getItem(OVERRIDES_KEY)) || {}; }catch(e){ return {}; }
+}
+function writeOverrides(ov){ localStorage.setItem(OVERRIDES_KEY, JSON.stringify(ov)); }
+
+async function toggleCurso(slug, novoStatus){
+  const pill = document.getElementById('savePill');
+  pill.textContent = 'salvando…'; pill.className = 'save-pill saving';
+
+  if(CONFIG.API_BASE){
+    try{
+      const resp = await fetch(`${CONFIG.API_BASE}?action=toggle`, {
+        method:"POST",
+        headers:{"Content-Type":"text/plain"},
+        body: JSON.stringify({slug, ativo:novoStatus, senha:ADMIN_PASS})
+      });
+      const data = await resp.json();
+      if(!data.ok) throw new Error(data.error||'Falha ao salvar');
+      pill.textContent = 'sincronizado'; pill.className = 'save-pill saved';
+      return;
+    }catch(e){
+      console.error(e);
+      pill.textContent = 'erro ao salvar'; pill.className = 'save-pill';
+      return;
+    }
+  }
+  // fallback local
+  const ov = readOverrides();
+  ov[slug] = novoStatus;
+  writeOverrides(ov);
+  pill.textContent = 'salvo neste navegador'; pill.className = 'save-pill saved';
+}
+
+function applyOverrides(cursos){
+  const ov = readOverrides();
+  return cursos.map(c => ov.hasOwnProperty(c.slug) ? {...c, ativo:ov[c.slug]} : c);
+}
+
+function renderTable(){
+  const term = document.getElementById('adminSearch').value.trim().toLowerCase();
+  const tbody = document.getElementById('adminTbody');
+  const list = ALL.filter(c => !term || c.nome.toLowerCase().includes(term) || c.categoria.toLowerCase().includes(term));
+  tbody.innerHTML = list.map(c => `
+    <tr class="${c.ativo?'':'inactive'}" data-slug="${c.slug}">
+      <td><button class="toggle ${c.ativo?'on':''}" data-slug="${c.slug}"></button></td>
+      <td>${c.nome}</td>
+      <td><span class="cat-tag" style="background:${catInfo(c.categoria).color}22; color:${catInfo(c.categoria).color}; border:1px solid ${catInfo(c.categoria).color}55">${c.categoria}</span></td>
+      <td>${c.carga_horaria}h</td>
+      <td>R$ ${brl(c.valor_esocial)}</td>
+      <td>R$ ${brl(c.valor_venda)}</td>
+      <td><a href="curso.html?slug=${c.slug}" target="_blank" class="nav-link" style="font-size:12px;">ver ↗</a></td>
+    </tr>
+  `).join('');
+
+  tbody.querySelectorAll('.toggle').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const slug = btn.dataset.slug;
+      const c = ALL.find(x=>x.slug===slug);
+      const novo = !c.ativo;
+      c.ativo = novo;
+      btn.classList.toggle('on', novo);
+      btn.closest('tr').classList.toggle('inactive', !novo);
+      updateCountBadge();
+      await toggleCurso(slug, novo);
+    });
+  });
+}
+
+function updateCountBadge(){
+  const ativos = ALL.filter(c=>c.ativo).length;
+  document.getElementById('countBadge').textContent = `${ALL.length} cursos · ${ativos} ativos na loja`;
+}
+
+async function showPanel(){
+  document.getElementById('lockScreen').style.display='none';
+  document.getElementById('adminPanel').style.display='block';
+  let cursos = await getCursos();
+  if(!CONFIG.API_BASE) cursos = applyOverrides(cursos);
+  ALL = cursos;
+  updateCountBadge();
+  renderTable();
+  document.getElementById('adminSearch').addEventListener('input', renderTable);
+}
+
+if(sessionStorage.getItem(SESSION_KEY) === "1") showPanel();
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="pageTitle">Carregando curso… — SafeSeg Online</title>
+<meta id="pageDesc" name="description" content="">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<div class="hazard-rule"></div>
+
+<header class="site-header">
+  <div class="container bar">
+    <a href="index.html" class="brand">
+      <span id="logoSlot"></span>
+      <div class="brand-text">
+        <span class="name">SafeSeg</span>
+        <span class="sub">Online</span>
+      </div>
+    </a>
+    <div class="nav-actions">
+      <a class="nav-link" href="index.html">Catálogo</a>
+      <button class="cart-btn" data-open-cart>
+        <span id="cartIconSlot"></span>
+        <span>Carrinho</span>
+        <span class="cart-count" style="display:none">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="course-hero">
+  <div class="container">
+    <div class="breadcrumb">
+      <a href="index.html">Catálogo</a> <span>/</span> <span id="crumbCat">—</span> <span>/</span> <span id="crumbName">—</span>
+    </div>
+    <span class="cat-tag" id="catTag" style="margin-bottom:14px; display:inline-block;">—</span>
+    <h1 class="course-title" id="courseTitle">Carregando…</h1>
+    <div class="meta-row"></div>
+  </div>
+</div>
+
+<div class="container course-layout" id="courseLayout" style="display:none;">
+  <div>
+    <div class="prose" id="courseProse"></div>
+
+    <div id="relatedWrap" style="margin-top:50px;">
+      <h3 class="related-title">Outros cursos da mesma área</h3>
+      <div class="catalog-grid" id="relatedGrid"></div>
+    </div>
+  </div>
+
+  <aside class="buy-card">
+    <div class="buy-price"><small>R$</small><span id="priceVal">0,00</span></div>
+    <div class="buy-note">Pagamento único · certificado liberado após conclusão</div>
+    <button class="btn btn-primary" id="addBtn">Adicionar ao carrinho</button>
+    <a href="carrinho.html" class="btn btn-ghost" id="buyNowBtn">Comprar agora</a>
+    <ul class="trust-list" id="trustList"></ul>
+  </aside>
+</div>
+
+<div class="container" id="notFoundState" style="display:none; padding:80px 0;">
+  <div class="empty-state">
+    <b>Curso não encontrado ou indisponível</b>
+    Este treinamento pode ter sido desativado. <a href="index.html" style="color:var(--amber-300)">Voltar ao catálogo</a>.
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h4>SafeSeg Segurança do Trabalho</h4>
+      <p>Treinamentos de NR online e presenciais, consultoria em PGR, PCMSO e LTCAT.</p>
+    </div>
+    <div>
+      <h4>Ajuda</h4>
+      <p><a href="carrinho.html">Meu carrinho</a><br><a href="admin.html">Área administrativa</a></p>
+    </div>
+    <div>
+      <h4>Certificação</h4>
+      <p>Certificados emitidos conforme carga horária da norma.</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© <span id="year"></span> SafeSeg Segurança do Trabalho</span>
+    <span>Dois Vizinhos/PR</span>
+  </div>
+</footer>
+
+<div class="overlay" id="cartOverlay"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h3>Seu carrinho</h3>
+    <button class="cart-close" id="cartClose">&times;</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer" id="cartFooter" style="display:none;">
+    <div class="cart-total-row">
+      <span class="lbl">Total</span>
+      <span class="val" id="cartTotalVal">R$ 0,00</span>
+    </div>
+    <button class="btn btn-primary" id="checkoutBtn" onclick="iniciarCheckout()">Finalizar matrícula</button>
+    <a href="index.html" class="btn btn-ghost" style="display:block; text-align:center;">Continuar escolhendo cursos</a>
+  </div>
+</aside>
+
+<script src="assets/app.js"></script>
+<script>
+document.getElementById('logoSlot').innerHTML = svgLogoMark();
+document.getElementById('cartIconSlot').innerHTML = iconCart();
+document.getElementById('year').textContent = new Date().getFullYear();
+
+function programaGenerico(curso){
+  // Descrição gerada a partir do nome/categoria — edite livremente por curso, se quiser.
+  const ci = catInfo(curso.categoria);
+  return `
+    <h2>Sobre o treinamento</h2>
+    <p>${curso.nome} é um curso 100% online da SafeSeg, com carga horária de ${curso.carga_horaria} horas, conteúdo alinhado às exigências da norma regulamentadora e certificado válido para registro no eSocial.</p>
+    <p>Ideal para empresas e profissionais dos setores de construção civil, metalurgia, agroindústria, transporte e madeireiro que precisam manter a equipe qualificada e a documentação de SST em dia.</p>
+    <div class="info-grid">
+      <div class="info-box"><div class="k">Carga horária</div><div class="v">${curso.carga_horaria}h</div></div>
+      <div class="info-box"><div class="k">Modalidade</div><div class="v">Online</div></div>
+      <div class="info-box"><div class="k">Categoria</div><div class="v">${ci.label}</div></div>
+      <div class="info-box"><div class="k">Certificado</div><div class="v">Digital · eSocial</div></div>
+    </div>
+    <h2>O que você recebe</h2>
+    <ul>
+      <li>Acesso ao conteúdo teórico completo, no seu ritmo</li>
+      <li>Avaliação final para verificação de aproveitamento</li>
+      <li>Certificado digital assinado, pronto para envio ao eSocial</li>
+      <li>Suporte da equipe SafeSeg em caso de dúvidas</li>
+    </ul>
+    <h2>Para quem é este curso</h2>
+    <p>Trabalhadores, supervisores e responsáveis técnicos que atuam em atividades relacionadas a ${ci.label.toLowerCase()}, e empresas que precisam comprovar a capacitação da equipe perante fiscalização e auditorias.</p>
+  `;
+}
+
+(async function init(){
+  const params = new URLSearchParams(location.search);
+  const slug = params.get('slug');
+  const curso = slug ? await getCursoBySlug(slug) : null;
+
+  if(!curso || !curso.ativo){
+    document.getElementById('notFoundState').style.display='block';
+    return;
+  }
+
+  const ci = catInfo(curso.categoria);
+  document.title = `${curso.nome} — SafeSeg Online`;
+  document.getElementById('pageDesc').setAttribute('content', `${curso.nome} — curso online SafeSeg, ${curso.carga_horaria}h, certificado válido para o eSocial.`);
+  document.getElementById('crumbCat').textContent = ci.label;
+  document.getElementById('crumbName').textContent = curso.nome;
+  document.getElementById('catTag').textContent = ci.label;
+  document.getElementById('catTag').style.background = `${ci.color}22`;
+  document.getElementById('catTag').style.color = ci.color;
+  document.getElementById('catTag').style.border = `1px solid ${ci.color}55`;
+  document.getElementById('courseTitle').textContent = curso.nome;
+  document.querySelector('.meta-row').innerHTML = `
+    <span class="meta-item">${iconClock()} ${curso.carga_horaria} horas</span>
+    <span class="meta-item">${iconCert()} Certificado eSocial</span>
+    <span class="meta-item">${iconInfinity()} Acesso ao concluir o curso</span>
+  `;
+  document.getElementById('priceVal').textContent = brl(curso.valor_venda);
+  document.getElementById('trustList').innerHTML = `
+    <li>${iconCheck()} <span>Certificado válido para envio ao eSocial</span></li>
+    <li>${iconCheck()} <span>Acesso liberado imediatamente após a confirmação</span></li>
+    <li>${iconCheck()} <span>Suporte direto com a equipe SafeSeg</span></li>
+  `;
+  document.getElementById('courseProse').innerHTML = programaGenerico(curso);
+  document.getElementById('courseLayout').style.display = 'grid';
+
+  document.getElementById('addBtn').onclick = ()=> addToCart(curso);
+  document.getElementById('buyNowBtn').onclick = ()=> addToCart(curso);
+
+  // relacionados
+  const todos = await getCursos();
+  const related = todos.filter(c=>c.ativo && c.categoria===curso.categoria && c.slug!==curso.slug).slice(0,3);
+  const grid = document.getElementById('relatedGrid');
+  if(related.length===0){ document.getElementById('relatedWrap').style.display='none'; }
+  else{
+    grid.innerHTML = related.map(c=>{
+      const rci = catInfo(c.categoria);
+      return `<a class="course-card" href="curso.html?slug=${c.slug}">
+        <div class="risk-bar" style="background:${rci.color}"></div>
+        <div class="card-body">
+          <div class="card-top">
+            <span class="cat-tag" style="background:${rci.color}22; color:${rci.color}; border:1px solid ${rci.color}55">${rci.label}</span>
+            <span class="card-hours">${iconClock()} ${c.carga_horaria}h</span>
+          </div>
+          <div class="card-title">${c.nome}</div>
+          <div class="card-bottom">
+            <div class="card-price"><div class="label">Matrícula</div><div class="value"><small>R$</small>${brl(c.valor_venda)}</div></div>
+          </div>
+        </div>
+      </a>`;
+    }).join('');
+  }
+})();
+</script>
+</body>
+</html>

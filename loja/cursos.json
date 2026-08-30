@@ -1,0 +1,852 @@
+[
+  {
+    "id": 1,
+    "slug": "rac-10-pro-041951-procedimento-integrado-para-trabalhos-em-e",
+    "nome": "RAC 10 (PRO 041951) - Procedimento Integrado para Trabalhos em Eletricidade",
+    "categoria": "RAC",
+    "carga_horaria": "2:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "slug": "nr-11-transporte-movimentacao-armazenagem-e-manuseio-de-mate",
+    "nome": "NR 11 - Transporte, Movimentação, Armazenagem e Manuseio de Materiais - Treinamento para Operadores de Empilhadeiras",
+    "categoria": "NR-11",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "slug": "nr-11-transporte-movimentacao-armazenagem-e-manuseio-de-mate-2",
+    "nome": "NR 11 - Transporte, Movimentação, Armazenagem e Manuseio de Materiais - Treinamento para Operadores de Guinchos",
+    "categoria": "NR-11",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 4,
+    "slug": "nr-11-transporte-movimentacao-armazenagem-e-manuseio-de-mate-3",
+    "nome": "NR 11 - Transporte, Movimentação, Armazenagem e Manuseio de Materiais - Treinamento para Operadores de Guindastes",
+    "categoria": "NR-11",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 5,
+    "slug": "nr-11-transporte-movimentacao-armazenagem-e-manuseio-de-mate-4",
+    "nome": "NR 11 - Transporte, Movimentação, Armazenagem e Manuseio de Materiais - Treinamento para Operadores de Ponte Rolante",
+    "categoria": "NR-11",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 6,
+    "slug": "nr-11-transporte-movimentacao-armazenagem-e-manuseio-de-mate-5",
+    "nome": "NR 11 - Transporte, Movimentação, Armazenagem e Manuseio de Materiais - Treinamento para Operadores de Talhas",
+    "categoria": "NR-11",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 7,
+    "slug": "nr-12-operacao-de-equipamentos-estacionarios-do-grupo-ii",
+    "nome": "NR 12 - Operação de Equipamentos Estacionários do Grupo II",
+    "categoria": "NR-12",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 8,
+    "slug": "nr-12-operacao-de-equipamentos-estacionarios-do-grupo-iii",
+    "nome": "NR 12 - Operação de Equipamentos Estacionários do Grupo III",
+    "categoria": "NR-12",
+    "carga_horaria": "5:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 9,
+    "slug": "nr-12-operacao-de-equipamentos-portateis-do-grupo-ii",
+    "nome": "NR 12 - Operação de Equipamentos Portáteis do Grupo II",
+    "categoria": "NR-12",
+    "carga_horaria": "8:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 10,
+    "slug": "nr-12-operacao-de-maquina-autopropelida-grupo-i",
+    "nome": "NR 12 - Operação de Máquina Autopropelida - Grupo I",
+    "categoria": "NR-12",
+    "carga_horaria": "8:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 11,
+    "slug": "nr-12-operacao-de-maquina-autopropelida-grupo-v-mini-rolo-co",
+    "nome": "NR 12 - Operação de Máquina Autopropelida Grupo V - Mini Rolo Compactador de Comando Remoto",
+    "categoria": "NR-12",
+    "carga_horaria": "5:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 12,
+    "slug": "nr-12-operacao-de-trator-de-esteiras-d9t-d10t",
+    "nome": "NR 12 - Operação de Trator de Esteiras D9T/D10T",
+    "categoria": "NR-12",
+    "carga_horaria": "5:30",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 13,
+    "slug": "nr-12-operacao-segura-de-ferramentas-eletricas",
+    "nome": "NR 12 - Operação Segura de Ferramentas Elétricas",
+    "categoria": "NR-12",
+    "carga_horaria": "5:00",
+    "valor_esocial": 60.0,
+    "valor_venda": 125.9,
+    "ativo": true
+  },
+  {
+    "id": 14,
+    "slug": "nr-12-operacao-segura-de-ferramentas-manuais-e-equipamentos",
+    "nome": "NR 12 - Operação Segura de Ferramentas Manuais e Equipamentos",
+    "categoria": "NR-12",
+    "carga_horaria": "5:30",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 15,
+    "slug": "nr-12-operacao-segura-de-martelete-pneumatico",
+    "nome": "NR 12 - Operação Segura de Martelete Pneumático",
+    "categoria": "NR-12",
+    "carga_horaria": "4:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 16,
+    "slug": "nr-12-operacao-segura-de-rocadeira-motorizada",
+    "nome": "NR 12 - Operação Segura de Roçadeira Motorizada",
+    "categoria": "NR-12",
+    "carga_horaria": "5:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 17,
+    "slug": "nr-18-nr-11-treinamento-de-sinaleiro-e-amarrador-de-cargas-s",
+    "nome": "NR 18 - NR 11 Treinamento de Sinaleiro e Amarrador de Cargas - Segurança em Operações de Içamento",
+    "categoria": "NR-18",
+    "carga_horaria": "16:00",
+    "valor_esocial": 75.9,
+    "valor_venda": 159.9,
+    "ativo": true
+  },
+  {
+    "id": 18,
+    "slug": "nr-20-seguranca-inflamaveis-e-combustiveis-curso-avancado-i-",
+    "nome": "NR 20 - Segurança Inflamáveis e Combustíveis (Curso Avançado I - Instalação Classe II)",
+    "categoria": "NR-20",
+    "carga_horaria": "20:00",
+    "valor_esocial": 74.0,
+    "valor_venda": 155.9,
+    "ativo": true
+  },
+  {
+    "id": 19,
+    "slug": "rac-12-trabalho-a-quente",
+    "nome": "RAC 12 - Trabalho a Quente",
+    "categoria": "RAC",
+    "carga_horaria": "2:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 20,
+    "slug": "soft-skills-para-o-canteiro-de-obras-desenvolvimento-de-habi",
+    "nome": "Soft Skills para o Canteiro de Obras: Desenvolvimento de Habilidades Comportamentais",
+    "categoria": "Diversos",
+    "carga_horaria": "2:00",
+    "valor_esocial": 44.0,
+    "valor_venda": 92.9,
+    "ativo": true
+  },
+  {
+    "id": 21,
+    "slug": "tbssma-rev01-01-01-2026",
+    "nome": "TBSSMA REV01_01.01.2026",
+    "categoria": "TBSSMA",
+    "carga_horaria": "4:00",
+    "valor_esocial": 74.0,
+    "valor_venda": 155.9,
+    "ativo": true
+  },
+  {
+    "id": 22,
+    "slug": "a-batalha-interior-no-trabalho-virtude-disciplina-e-cultura-",
+    "nome": "A Batalha Interior no Trabalho: Virtude, Disciplina e Cultura de Time",
+    "categoria": "Diversos",
+    "carga_horaria": "0:50",
+    "valor_esocial": 22.0,
+    "valor_venda": 46.9,
+    "ativo": true
+  },
+  {
+    "id": 23,
+    "slug": "nr-12-equipamentos-portateis-do-grupo-iii-maquina-de-solda-e",
+    "nome": "NR 12 - Equipamentos Portáteis do Grupo III - Máquina de Solda e Conjunto Oxicorte",
+    "categoria": "NR-12",
+    "carga_horaria": "5:20",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 24,
+    "slug": "nr-12-operacao-de-caminhoes-e-onibus",
+    "nome": "NR 12 - Operação de Caminhões e Ônibus",
+    "categoria": "NR-12",
+    "carga_horaria": "5:30",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 25,
+    "slug": "nr-12-operacao-de-equipamentos-estacionarios",
+    "nome": "NR 12 - Operação de Equipamentos Estacionários",
+    "categoria": "NR-12",
+    "carga_horaria": "5:30",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 26,
+    "slug": "nr-12-treinamento-em-seguranca-no-trabalho-em-maquinas-e-equ",
+    "nome": "NR 12 - Treinamento em Segurança no Trabalho em Máquinas e Equipamentos",
+    "categoria": "NR-12",
+    "carga_horaria": "4:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 27,
+    "slug": "nr-17-ergonomia-treinamento-para-operadores-de-checkout",
+    "nome": "NR 17 - Ergonomia - Treinamento para Operadores de Checkout",
+    "categoria": "NR-17",
+    "carga_horaria": "2:00",
+    "valor_esocial": 75.9,
+    "valor_venda": 159.9,
+    "ativo": true
+  },
+  {
+    "id": 28,
+    "slug": "nr-18-treinamento-inicial-para-profissionais-na-industria-da",
+    "nome": "NR 18 - Treinamento Inicial para Profissionais na Indústria da Edificação",
+    "categoria": "NR-18",
+    "carga_horaria": "4:00",
+    "valor_esocial": 42.0,
+    "valor_venda": 88.9,
+    "ativo": true
+  },
+  {
+    "id": 29,
+    "slug": "nr-18-treinamento-periodico-para-profissionais-na-industria-",
+    "nome": "NR 18 - Treinamento Periódico para Profissionais na Indústria da Edificação",
+    "categoria": "NR-18",
+    "carga_horaria": "6:00",
+    "valor_esocial": 31.9,
+    "valor_venda": 66.9,
+    "ativo": true
+  },
+  {
+    "id": 30,
+    "slug": "nr-20-curso-basico-instalacao-classe-i-atividade-especifica-",
+    "nome": "NR 20 - Curso básico (Instalação Classe I; Atividade específica, pontual e de curta duração)",
+    "categoria": "NR-20",
+    "carga_horaria": "4:00",
+    "valor_esocial": 42.9,
+    "valor_venda": 90.9,
+    "ativo": true
+  },
+  {
+    "id": 31,
+    "slug": "nr-20-curso-basico-instalacao-classe-iii-atividade-especific",
+    "nome": "NR 20 - Curso básico (Instalação Classe III; Atividade específica, pontual e de curta duração)",
+    "categoria": "NR-20",
+    "carga_horaria": "8:00",
+    "valor_esocial": 42.0,
+    "valor_venda": 88.9,
+    "ativo": true
+  },
+  {
+    "id": 32,
+    "slug": "nr-20-curso-intermediario-instalacao-classe-i-manutencao-e-i",
+    "nome": "NR 20 - Curso intermediário (Instalação Classe I; Manutenção e inspeção)",
+    "categoria": "NR-20",
+    "carga_horaria": "12:00",
+    "valor_esocial": 74.8,
+    "valor_venda": 157.9,
+    "ativo": true
+  },
+  {
+    "id": 33,
+    "slug": "nr-20-curso-intermediario-instalacao-classe-iii-manutencao-e",
+    "nome": "NR 20 - Curso intermediário (Instalação Classe III; Manutenção e inspeção)",
+    "categoria": "NR-20",
+    "carga_horaria": "16:00",
+    "valor_esocial": 75.9,
+    "valor_venda": 159.9,
+    "ativo": true
+  },
+  {
+    "id": 34,
+    "slug": "nr-22-seguranca-e-saude-ocupacional-na-mineracao-mineracao-a",
+    "nome": "NR 22 - Segurança e Saúde Ocupacional na Mineração - Mineração a Céu Aberto",
+    "categoria": "NR-22",
+    "carga_horaria": "16:00",
+    "valor_esocial": 82.5,
+    "valor_venda": 173.9,
+    "ativo": true
+  },
+  {
+    "id": 35,
+    "slug": "nr-22-seguranca-e-saude-ocupacional-na-mineracao-em-atividad",
+    "nome": "NR 22 - Segurança e Saúde Ocupacional na Mineração em Atividades de Subsolo",
+    "categoria": "NR-22",
+    "carga_horaria": "24:00",
+    "valor_esocial": 82.0,
+    "valor_venda": 172.9,
+    "ativo": true
+  },
+  {
+    "id": 36,
+    "slug": "nr-23-nocoes-basicas-de-prevencao-e-combate-a-incendio",
+    "nome": "NR 23 - Noções Básicas de Prevenção e Combate a Incêndio",
+    "categoria": "NR-23",
+    "carga_horaria": "2:00",
+    "valor_esocial": 33.0,
+    "valor_venda": 69.9,
+    "ativo": true
+  },
+  {
+    "id": 37,
+    "slug": "nr-23-prevencao-e-combate-a-incendio",
+    "nome": "NR 23 - Prevenção e Combate a Incêndio",
+    "categoria": "NR-23",
+    "carga_horaria": "8:00",
+    "valor_esocial": 42.9,
+    "valor_venda": 90.9,
+    "ativo": true
+  },
+  {
+    "id": 38,
+    "slug": "nr-26-sinalizacao-de-seguranca-treinamento-em-utilizacao-de-",
+    "nome": "NR 26 - Sinalização de Segurança - Treinamento em utilização de produtos químicos",
+    "categoria": "NR-26",
+    "carga_horaria": "4:00",
+    "valor_esocial": 38.0,
+    "valor_venda": 79.9,
+    "ativo": true
+  },
+  {
+    "id": 39,
+    "slug": "nr-29-treinamento-de-seguranca-e-saude-no-trabalho-portuario",
+    "nome": "NR 29 - Treinamento de Segurança e Saúde no Trabalho Portuário",
+    "categoria": "NR-29",
+    "carga_horaria": "5:00",
+    "valor_esocial": 71.5,
+    "valor_venda": 150.9,
+    "ativo": true
+  },
+  {
+    "id": 40,
+    "slug": "nr-31-seguranca-e-saude-para-o-trabalhador-rural",
+    "nome": "NR 31 - Segurança e Saúde para o Trabalhador Rural",
+    "categoria": "NR-31",
+    "carga_horaria": "20:00",
+    "valor_esocial": 57.2,
+    "valor_venda": 120.9,
+    "ativo": true
+  },
+  {
+    "id": 41,
+    "slug": "nr-32-seguranca-e-saude-no-trabalho-em-servicos-de-saude",
+    "nome": "NR 32 - Segurança e Saúde no Trabalho em Serviços de Saúde",
+    "categoria": "NR-32",
+    "carga_horaria": "4:00",
+    "valor_esocial": 42.9,
+    "valor_venda": 90.9,
+    "ativo": true
+  },
+  {
+    "id": 42,
+    "slug": "nr-33-treinamento-em-espacos-confinados-periodico-supervisor",
+    "nome": "NR 33 - Treinamento em Espaços Confinados - Periódico (Supervisor de Entrada)",
+    "categoria": "NR-33",
+    "carga_horaria": "8:00",
+    "valor_esocial": 51.7,
+    "valor_venda": 108.9,
+    "ativo": true
+  },
+  {
+    "id": 43,
+    "slug": "nr-33-treinamento-em-espacos-confinados-periodico-trabalhado",
+    "nome": "NR 33 - Treinamento em Espaços Confinados - Periódico (Trabalhadores Autorizados e Vigias)",
+    "categoria": "NR-33",
+    "carga_horaria": "8:00",
+    "valor_esocial": 51.7,
+    "valor_venda": 108.9,
+    "ativo": true
+  },
+  {
+    "id": 44,
+    "slug": "nr-33-treinamento-em-espacos-confinados-trabalhadores-autori",
+    "nome": "NR 33 - Treinamento em Espaços Confinados (Trabalhadores Autorizados e Vigias)",
+    "categoria": "NR-33",
+    "carga_horaria": "16:00",
+    "valor_esocial": 79.2,
+    "valor_venda": 166.9,
+    "ativo": true
+  },
+  {
+    "id": 45,
+    "slug": "nr-35-treinamento-de-trabalho-em-altura",
+    "nome": "NR 35 - Treinamento de Trabalho em Altura",
+    "categoria": "NR-35",
+    "carga_horaria": "8:00",
+    "valor_esocial": 47.0,
+    "valor_venda": 98.9,
+    "ativo": true
+  },
+  {
+    "id": 46,
+    "slug": "nr-38-limpeza-urbana-e-manejo-de-residuos-solidos",
+    "nome": "NR 38 - Limpeza Urbana e Manejo de Resíduos Sólidos",
+    "categoria": "NR-38",
+    "carga_horaria": "4:30",
+    "valor_esocial": 74.8,
+    "valor_venda": 157.9,
+    "ativo": true
+  },
+  {
+    "id": 47,
+    "slug": "permissao-de-trabalho-basico",
+    "nome": "Permissão de Trabalho Básico",
+    "categoria": "Diversos",
+    "carga_horaria": "4:00",
+    "valor_esocial": 38.5,
+    "valor_venda": 80.9,
+    "ativo": true
+  },
+  {
+    "id": 48,
+    "slug": "protecao-respiratoria",
+    "nome": "Proteção Respiratória",
+    "categoria": "Diversos",
+    "carga_horaria": "2:00",
+    "valor_esocial": 38.5,
+    "valor_venda": 80.9,
+    "ativo": true
+  },
+  {
+    "id": 49,
+    "slug": "rac-1-trabalho-em-altura",
+    "nome": "RAC 1 - Trabalho em Altura",
+    "categoria": "RAC",
+    "carga_horaria": "1:15",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 50,
+    "slug": "rac-10-trabalhos-em-eletricidade-da-vale",
+    "nome": "RAC 10 - Trabalhos em Eletricidade da Vale",
+    "categoria": "RAC",
+    "carga_horaria": "2:30",
+    "valor_esocial": 74.0,
+    "valor_venda": 155.9,
+    "ativo": true
+  },
+  {
+    "id": 51,
+    "slug": "rac-2-veiculos-automotores",
+    "nome": "RAC 2 - Veículos Automotores",
+    "categoria": "RAC",
+    "carga_horaria": "1:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 52,
+    "slug": "rac-3-operacao-de-equipamentos-moveis",
+    "nome": "RAC 3 - Operação de Equipamentos Móveis",
+    "categoria": "RAC",
+    "carga_horaria": "1:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 53,
+    "slug": "rac-4-bloqueio-identificacao-e-zero-energia",
+    "nome": "RAC 4 - Bloqueio, Identificação e Zero Energia",
+    "categoria": "RAC",
+    "carga_horaria": "1:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 54,
+    "slug": "rac-5-icamento-de-carga",
+    "nome": "RAC 5 - Içamento de Carga",
+    "categoria": "RAC",
+    "carga_horaria": "1:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 55,
+    "slug": "rac-6-espaco-confinado",
+    "nome": "RAC 6 - Espaço Confinado",
+    "categoria": "RAC",
+    "carga_horaria": "2:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 56,
+    "slug": "rac-7-protecao-de-maquinas",
+    "nome": "RAC 7 - Proteção de Máquinas",
+    "categoria": "RAC",
+    "carga_horaria": "2:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 57,
+    "slug": "rac-8-atividades-em-terreno",
+    "nome": "RAC 8 - Atividades em Terreno",
+    "categoria": "RAC",
+    "carga_horaria": "2:00",
+    "valor_esocial": 27.0,
+    "valor_venda": 56.9,
+    "ativo": true
+  },
+  {
+    "id": 58,
+    "slug": "treinamento-em-bloqueio-e-etiquetagem",
+    "nome": "Treinamento em Bloqueio e Etiquetagem",
+    "categoria": "Diversos",
+    "carga_horaria": "9:00",
+    "valor_esocial": 38.5,
+    "valor_venda": 80.9,
+    "ativo": true
+  },
+  {
+    "id": 59,
+    "slug": "treinamento-em-direcao-defensiva",
+    "nome": "Treinamento em Direção Defensiva",
+    "categoria": "Diversos",
+    "carga_horaria": "5:00",
+    "valor_esocial": 38.5,
+    "valor_venda": 80.9,
+    "ativo": true
+  },
+  {
+    "id": 60,
+    "slug": "treinamento-em-direcao-defensiva-16h",
+    "nome": "Treinamento em Direção Defensiva 16h",
+    "categoria": "Diversos",
+    "carga_horaria": "16:00",
+    "valor_esocial": 72.6,
+    "valor_venda": 152.9,
+    "ativo": true
+  },
+  {
+    "id": 61,
+    "slug": "treinamento-para-trabalho-em-areas-classificadas",
+    "nome": "Treinamento para Trabalho em Áreas Classificadas",
+    "categoria": "Diversos",
+    "carga_horaria": "2:00",
+    "valor_esocial": 38.5,
+    "valor_venda": 80.9,
+    "ativo": true
+  },
+  {
+    "id": 62,
+    "slug": "treinamento-trabalho-a-quente-nr-34",
+    "nome": "Treinamento Trabalho a Quente NR-34",
+    "categoria": "Diversos",
+    "carga_horaria": "6:00",
+    "valor_esocial": 74.0,
+    "valor_venda": 155.9,
+    "ativo": true
+  },
+  {
+    "id": 63,
+    "slug": "aspectos-psicossociais",
+    "nome": "Aspectos Psicossociais",
+    "categoria": "Diversos",
+    "carga_horaria": "1:00",
+    "valor_esocial": 44.0,
+    "valor_venda": 92.9,
+    "ativo": true
+  },
+  {
+    "id": 64,
+    "slug": "aspectos-psicossociais-para-profissionais-de-sst-e-dp",
+    "nome": "Aspectos Psicossociais para Profissionais de SST e DP",
+    "categoria": "Diversos",
+    "carga_horaria": "3:20",
+    "valor_esocial": 218.9,
+    "valor_venda": 459.9,
+    "ativo": true
+  },
+  {
+    "id": 65,
+    "slug": "benzeno-nr20",
+    "nome": "Benzeno - NR20",
+    "categoria": "Diversos",
+    "carga_horaria": "4:00",
+    "valor_esocial": 64.9,
+    "valor_venda": 136.9,
+    "ativo": true
+  },
+  {
+    "id": 66,
+    "slug": "comissao-interna-de-prevencao-de-acidentes-e-de-assedio-na-m",
+    "nome": "Comissão Interna de Prevenção de Acidentes e de Assédio na Mineração (CIPAMIN)",
+    "categoria": "Diversos",
+    "carga_horaria": "40:00",
+    "valor_esocial": 97.9,
+    "valor_venda": 205.9,
+    "ativo": true
+  },
+  {
+    "id": 67,
+    "slug": "ergonomia-nr-17",
+    "nome": "Ergonomia (NR-17)",
+    "categoria": "Diversos",
+    "carga_horaria": "5:00",
+    "valor_esocial": 74.8,
+    "valor_venda": 157.9,
+    "ativo": true
+  },
+  {
+    "id": 68,
+    "slug": "nocoes-de-primeiros-socorros",
+    "nome": "Noções de Primeiros Socorros",
+    "categoria": "Diversos",
+    "carga_horaria": "2:00",
+    "valor_esocial": 48.0,
+    "valor_venda": 100.9,
+    "ativo": true
+  },
+  {
+    "id": 69,
+    "slug": "nocoes-de-primeiros-socorros-4h",
+    "nome": "Noções de Primeiros Socorros (4h)",
+    "categoria": "Diversos",
+    "carga_horaria": "4:00",
+    "valor_esocial": 59.0,
+    "valor_venda": 123.9,
+    "ativo": true
+  },
+  {
+    "id": 70,
+    "slug": "nr-05-comissao-interna-de-prevencao-de-acidentes-e-assedio-g",
+    "nome": "NR 05 - Comissão Interna de Prevenção de Acidentes e Assédio [Grau de Risco 3]",
+    "categoria": "NR-05",
+    "carga_horaria": "16:00",
+    "valor_esocial": 51.7,
+    "valor_venda": 108.9,
+    "ativo": true
+  },
+  {
+    "id": 71,
+    "slug": "nr-05-comissao-interna-de-prevencao-de-acidentes-e-assedio-g-2",
+    "nome": "NR 05 - Comissão Interna de Prevenção de Acidentes e Assédio [Grau de Risco 1]",
+    "categoria": "NR-05",
+    "carga_horaria": "8:00",
+    "valor_esocial": 51.7,
+    "valor_venda": 108.9,
+    "ativo": true
+  },
+  {
+    "id": 72,
+    "slug": "nr-05-comissao-interna-de-prevencao-de-acidentes-e-assedio-g-3",
+    "nome": "NR 05 - Comissão Interna de Prevenção de Acidentes e Assédio [Grau de Risco 2]",
+    "categoria": "NR-05",
+    "carga_horaria": "12:00",
+    "valor_esocial": 51.7,
+    "valor_venda": 108.9,
+    "ativo": true
+  },
+  {
+    "id": 73,
+    "slug": "nr-05-comissao-interna-de-prevencao-de-acidentes-e-assedio-g-4",
+    "nome": "NR 05 - Comissão Interna de Prevenção de Acidentes e Assédio [Grau de Risco 4]",
+    "categoria": "NR-05",
+    "carga_horaria": "20:00",
+    "valor_esocial": 51.7,
+    "valor_venda": 108.9,
+    "ativo": true
+  },
+  {
+    "id": 74,
+    "slug": "nr-06-equipamentos-de-protecao-hospitalar",
+    "nome": "NR 06 - Equipamentos de Proteção Hospitalar",
+    "categoria": "NR-06",
+    "carga_horaria": "2:00",
+    "valor_esocial": 39.6,
+    "valor_venda": 83.9,
+    "ativo": true
+  },
+  {
+    "id": 75,
+    "slug": "nr-06-equipamentos-de-protecao-individual",
+    "nome": "NR 06 - Equipamentos de Proteção Individual",
+    "categoria": "NR-06",
+    "carga_horaria": "2:00",
+    "valor_esocial": 39.6,
+    "valor_venda": 83.9,
+    "ativo": true
+  },
+  {
+    "id": 76,
+    "slug": "nr-10-reciclagem-do-treinamento-em-seguranca-para-trabalhado",
+    "nome": "NR 10 - Reciclagem do Treinamento em Segurança para Trabalhadores que Atuarem em Instalações Elétricas Energizadas de Alta Tensão no SEP",
+    "categoria": "NR-10",
+    "carga_horaria": "20:00",
+    "valor_esocial": 84.0,
+    "valor_venda": 176.9,
+    "ativo": true
+  },
+  {
+    "id": 77,
+    "slug": "nr-10-reciclagem-do-treinamento-em-seguranca-para-trabalhado-2",
+    "nome": "NR 10 - Reciclagem do Treinamento em Segurança para Trabalhadores que Atuarem em Instalações Elétricas Energizadas de Alta Tensão no SEP 8h",
+    "categoria": "NR-10",
+    "carga_horaria": "8:00",
+    "valor_esocial": 73.7,
+    "valor_venda": 154.9,
+    "ativo": true
+  },
+  {
+    "id": 78,
+    "slug": "nr-10-reciclagem-treinamento-em-seguranca-para-instalacoes-e",
+    "nome": "NR 10 - Reciclagem Treinamento em Segurança para Instalações Elétricas e Serviços",
+    "categoria": "NR-10",
+    "carga_horaria": "16:00",
+    "valor_esocial": 84.0,
+    "valor_venda": 176.9,
+    "ativo": true
+  },
+  {
+    "id": 79,
+    "slug": "nr-10-reciclagem-treinamento-em-seguranca-para-instalacoes-e-2",
+    "nome": "NR 10 - Reciclagem Treinamento em Segurança para Instalações Elétricas e Serviços I",
+    "categoria": "NR-10",
+    "carga_horaria": "8:00",
+    "valor_esocial": 73.7,
+    "valor_venda": 154.9,
+    "ativo": true
+  },
+  {
+    "id": 80,
+    "slug": "nr-10-reciclagem-treinamento-em-seguranca-para-instalacoes-e-3",
+    "nome": "NR 10 - Reciclagem Treinamento em Segurança para Instalações Elétricas e Serviços I 20h",
+    "categoria": "NR-10",
+    "carga_horaria": "20:00",
+    "valor_esocial": 99.0,
+    "valor_venda": 207.9,
+    "ativo": true
+  },
+  {
+    "id": 81,
+    "slug": "nr-10-seguranca-eletrica-em-instalacoes-e-servicos",
+    "nome": "NR 10 - Segurança Elétrica em Instalações e Serviços",
+    "categoria": "NR-10",
+    "carga_horaria": "40:00",
+    "valor_esocial": 97.0,
+    "valor_venda": 203.9,
+    "ativo": true
+  },
+  {
+    "id": 82,
+    "slug": "nr-10-treinamento-em-seguranca-para-intervencoes-em-instalac",
+    "nome": "NR 10 - Treinamento em Segurança para Intervenções em Instalações Elétricas Energizadas de Alta Tensão no SEP",
+    "categoria": "NR-10",
+    "carga_horaria": "40:00",
+    "valor_esocial": 97.9,
+    "valor_venda": 205.9,
+    "ativo": true
+  },
+  {
+    "id": 83,
+    "slug": "nr-11-e-nr-12-seguranca-na-movimentacao-de-materiais-e-na-op",
+    "nome": "NR 11 e NR 12 - Segurança na Movimentação de Materiais e na Operação de Máquinas (Conforme NR-11 e NR-12)",
+    "categoria": "NR-11",
+    "carga_horaria": "12:00",
+    "valor_esocial": 137.5,
+    "valor_venda": 288.9,
+    "ativo": true
+  },
+  {
+    "id": 84,
+    "slug": "nr-11-treinamento-de-transporte-movimentacao-armazenagem-e-m",
+    "nome": "NR 11 - Treinamento de Transporte, Movimentação, Armazenagem e Manuseio de Materiais",
+    "categoria": "NR-11",
+    "carga_horaria": "6:00",
+    "valor_esocial": 60.5,
+    "valor_venda": 126.9,
+    "ativo": true
+  },
+  {
+    "id": 85,
+    "slug": "nr-11-treinamento-de-transporte-movimentacao-armazenagem-e-m-2",
+    "nome": "NR 11 - Treinamento de Transporte, Movimentação, Armazenagem e Manuseio de Materiais 16h",
+    "categoria": "NR-11",
+    "carga_horaria": "16:00",
+    "valor_esocial": 77.0,
+    "valor_venda": 161.9,
+    "ativo": true
+  }
+]
