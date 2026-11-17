@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SafeSeg Segurança do Trabalho | Treinamentos NR em Dois Vizinhos, PR</title>
+<meta name="description" content="Treinamentos de Normas Regulamentadoras com instrutor presente e certificado com validação pública por QR Code. Turmas na sua empresa ou turmas abertas em Dois Vizinhos, PR.">
+<meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SafeSeg Segurança do Trabalho">
+<meta property="og:title" content="SafeSeg Segurança do Trabalho | Treinamentos NR">
+<meta property="og:description" content="Treinamentos de NR com instrutor presente e certificado com validação pública por QR Code.">
+<meta property="og:image" content="https://www.safeseg.eng.br/assets/og-safeseg.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#14171B">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F59E0B' d='M12 2 4 5v6c0 5.2 3.4 9.6 8 11 4.6-1.4 8-5.8 8-11V5l-8-3z'/%3E%3C/svg%3E">
+<link rel="preload" href="../assets/fonts/bebas-neue-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Bebas Neue';font-weight:400;font-display:swap;src:url(../assets/fonts/bebas-neue-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-weight:400;font-display:swap;src:url(../assets/fonts/inter-latin-400-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-weight:500;font-display:swap;src:url(../assets/fonts/inter-latin-500-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-weight:600;font-display:swap;src:url(../assets/fonts/inter-latin-600-normal.woff2) format('woff2')}
+@font-face{font-family:'Inter';font-weight:700;font-display:swap;src:url(../assets/fonts/inter-latin-700-normal.woff2) format('woff2')}
+:root{
+  --grafite:#14171B; --grafite-2:#1C2026; --aco:#262B33; --linha:rgba(236,231,221,.12);
+  --ambar:#F59E0B; --papel:#ECE7DD; --cinza:#9AA0A8; --verde:#22B573;
+  --display:'Bebas Neue',Impact,'Arial Narrow',sans-serif;
+  --texto:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--grafite);color:var(--papel);font:400 16.5px/1.6 var(--texto);min-height:100vh}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:3px solid var(--ambar);outline-offset:3px;border-radius:3px}
+.contido{width:min(1120px,100% - 36px);margin-inline:auto}
+
+/* ---------- topo + abas (fichário) ---------- */
+.topo{position:sticky;top:0;z-index:20;background:var(--grafite);border-bottom:2px solid var(--ambar)}
+.topo-linha{display:flex;align-items:center;gap:16px;height:64px}
+.marca{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto}
+.marca img{height:38px;width:auto}
+.marca b{font-weight:600;font-size:15px;line-height:1.15}
+.marca small{display:block;font-weight:400;color:var(--cinza);font-size:12.5px}
+.abas{display:flex;gap:4px;align-self:flex-end}
+.aba{display:flex;align-items:center;gap:8px;padding:12px 18px 11px;border-radius:8px 8px 0 0;font-weight:600;font-size:15px;color:var(--cinza);background:var(--grafite-2);border:1px solid var(--linha);border-bottom:0;position:relative;top:2px}
+.aba svg{width:18px;height:18px}
+.aba:hover{color:var(--papel)}
+.aba[aria-selected="true"]{background:var(--ambar);color:var(--grafite);border-color:var(--ambar)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:600 16px/1 var(--texto);text-decoration:none;padding:15px 22px;border-radius:8px;white-space:nowrap}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-wa{background:var(--verde);color:#fff}.btn-wa:hover{background:#1c9d62}
+.btn-escuro{background:var(--grafite);color:var(--papel)}.btn-escuro:hover{background:#000}
+.btn-ambar{background:var(--ambar);color:var(--grafite)}.btn-ambar:hover{background:#ffb02e}
+.btn-linha{border:2px solid var(--linha);color:var(--papel)}.btn-linha:hover{border-color:var(--papel)}
+.topo .btn{padding:11px 15px;font-size:14.5px}
+
+/* ---------- painéis ---------- */
+.painel{padding:44px 0 72px}
+.painel[hidden]{display:none}
+@media (prefers-reduced-motion:no-preference){
+  .painel:not([hidden]){animation:entra .28s ease-out}
+  @keyframes entra{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+}
+.titulo{font:400 clamp(42px,5.4vw,64px)/.95 var(--display);letter-spacing:.01em;margin-bottom:12px}
+.intro{color:var(--cinza);max-width:62ch;font-size:17.5px;margin-bottom:32px}
+
+/* início */
+.inicio{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.placa{position:relative;background:var(--ambar);color:var(--grafite);padding:14px;border-radius:10px}
+.placa::before{content:"";position:absolute;inset:0;border-radius:10px;padding:14px;background:repeating-linear-gradient(-45deg,var(--grafite) 0 18px,var(--ambar) 18px 36px);
+  -webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0)}
+.placa-miolo{position:relative;border:3px solid var(--grafite);border-radius:4px;padding:32px 34px;height:100%}
+.placa h1{font:400 clamp(58px,8.4vw,118px)/.86 var(--display);margin-bottom:18px}
+.placa p{font-weight:500;font-size:17.5px;max-width:44ch}
+.placa .btn{margin-top:24px}
+.atalhos{display:grid;gap:12px;align-content:stretch}
+.atalho{display:grid;grid-template-columns:52px 1fr auto;gap:16px;align-items:center;text-align:left;width:100%;padding:20px;border-radius:10px;background:var(--grafite-2);border:1px solid var(--linha);text-decoration:none}
+.atalho:hover{border-color:var(--ambar)}
+.atalho .ic{width:52px;height:52px;border-radius:10px;background:var(--aco);display:grid;place-items:center;color:var(--ambar)}
+.atalho .ic svg{width:28px;height:28px}
+.atalho b{display:block;font-size:17px;font-weight:600}
+.atalho .txt{color:var(--cinza);font-size:14.5px;line-height:1.4}
+.atalho .txt b{color:var(--papel)}
+.atalho .seta{width:20px;height:20px;color:var(--cinza)}
+.faixa{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--linha);border:1px solid var(--linha);border-radius:10px;overflow:hidden;margin-top:28px}
+.faixa div{background:var(--grafite);padding:18px 20px}
+.faixa b{display:block;font-weight:600;font-size:15.5px}
+.faixa span{color:var(--cinza);font-size:14px}
+
+/* treinamentos */
+.filtros{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filtro{padding:9px 16px;border-radius:999px;border:1.5px solid var(--linha);font-size:15px;font-weight:500;color:var(--cinza)}
+.filtro:hover{color:var(--papel)}
+.filtro[aria-pressed="true"]{background:var(--papel);color:var(--grafite);border-color:var(--papel)}
+.grade{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;list-style:none}
+.curso{background:var(--grafite-2);border:1px solid var(--linha);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.curso[hidden]{display:none}
+.curso-topo{display:flex;align-items:center;gap:14px;padding:18px 18px 0}
+.curso-topo .ic{width:46px;height:46px;flex:none;border-radius:50%;background:var(--ambar);color:var(--grafite);display:grid;place-items:center}
+.curso-topo .ic svg{width:26px;height:26px}
+.curso-nr{font:400 30px/1 var(--display);color:var(--ambar);letter-spacing:.02em}
+.curso h3{font:600 18px/1.3 var(--texto);padding:12px 18px 0}
+.curso p{color:var(--cinza);font-size:15px;padding:6px 18px 0;flex:1}
+.curso details{margin:14px 18px 0;border-top:1px solid var(--linha)}
+.curso summary{list-style:none;padding:12px 0;font-size:14.5px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.curso summary::-webkit-details-marker{display:none}
+.curso summary::after{content:"+";font-size:22px;line-height:1;color:var(--ambar);transition:transform .2s}
+.curso details[open] summary::after{transform:rotate(45deg)}
+.curso details ul{list-style:none;padding:0 0 12px;font-size:14.5px;color:#c9c4ba}
+.curso details li{padding-left:18px;position:relative;margin-bottom:6px}
+.curso details li::before{content:"";position:absolute;left:0;top:.6em;width:8px;height:2px;background:var(--ambar)}
+.curso a.pedir{margin:auto 18px 18px;margin-top:6px;justify-content:center}
+.online{margin-top:28px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:20px 22px;border-radius:10px;border:1.5px dashed rgba(245,158,11,.55)}
+.online p{max-width:60ch}
+.online b{color:var(--ambar)}
+
+/* como funciona */
+.trilho{list-style:none;counter-reset:p;display:grid;gap:0;max-width:760px}
+.trilho li{counter-increment:p;display:grid;grid-template-columns:64px 1fr;gap:20px;position:relative;padding-bottom:30px}
+.trilho li:not(:last-child)::after{content:"";position:absolute;left:31px;top:64px;bottom:0;width:2px;background:repeating-linear-gradient(var(--ambar) 0 8px,transparent 8px 14px)}
+.trilho li::before{content:counter(p);width:64px;height:64px;border-radius:50%;border:2px solid var(--ambar);display:grid;place-items:center;font:400 34px/1 var(--display);color:var(--ambar)}
+.trilho h3{font:600 19px/1.3 var(--texto);margin:8px 0 4px}
+.trilho p{color:var(--cinza)}
+.modos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.modos div{border-top:3px solid var(--ambar);padding-top:16px}
+.modos h3{font:600 17px/1.3 var(--texto);margin-bottom:6px}
+.modos p{color:var(--cinza);font-size:15px}
+
+/* sobre */
+.sobre{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr);gap:56px;align-items:center}
+.sobre img{width:min(400px,100%);margin-inline:auto}
+.sobre p{color:#c9c4ba;margin-bottom:14px;max-width:60ch}
+.razoes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 32px;margin-top:44px}
+.razoes div{border-left:3px solid var(--ambar);padding-left:18px}
+.razoes h3{font:600 17.5px/1.3 var(--texto);margin-bottom:4px}
+.razoes p{color:var(--cinza);font-size:15.5px}
+.setores{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:36px}
+.setores li{border:1.5px solid rgba(236,231,221,.22);border-radius:999px;padding:8px 16px;font-size:15px}
+
+/* contato */
+.contato{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:start}
+.contato-chamada{background:var(--ambar);color:var(--grafite);border-radius:10px;padding:32px}
+.contato-chamada p{font-weight:500;font-size:17.5px;margin-bottom:22px}
+.contato-chamada .titulo{margin-bottom:12px}
+.canais{list-style:none;border:1px solid var(--linha);border-radius:10px;overflow:hidden}
+.canais li+li{border-top:1px solid var(--linha)}
+.canais a,.canais div{display:flex;justify-content:space-between;gap:14px;padding:18px 20px;text-decoration:none;flex-wrap:wrap}
+.canais a:hover{background:var(--grafite-2)}
+.canais span{color:var(--cinza);font-size:14.5px}
+.canais b{font-weight:600}
+.valida{margin-top:14px;display:flex;gap:16px;align-items:center;padding:18px 20px;border-radius:10px;background:var(--papel);color:var(--grafite);text-decoration:none}
+.valida img{width:76px;height:76px;background:#fff;padding:6px;border-radius:4px;flex:none}
+.valida b{display:block;font-size:16.5px}
+.valida span{font-size:14.5px;color:#3b4048}
+
+.rodape{border-top:1px solid var(--linha);padding:26px 0 32px;font-size:14px;color:var(--cinza)}
+.rodape .contido{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 28px}
+.rodape nav{display:flex;flex-wrap:wrap;gap:10px 22px}
+.rodape a{text-decoration:none}.rodape a:hover{color:var(--papel)}
+
+/* ---------- responsivo ---------- */
+@media (max-width:1000px){
+  .grade{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .inicio,.sobre,.contato{grid-template-columns:1fr}
+  .sobre img{width:220px}
+  .faixa{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  body{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+  .topo{border-bottom:1px solid var(--linha)}
+  .topo-linha{height:58px}
+  .marca img{height:32px}
+  .topo .btn span{display:none}
+  .topo .btn{padding:10px}
+  /* abas viram barra inferior de app */
+  .abas{position:fixed;left:0;right:0;bottom:0;z-index:30;gap:0;background:var(--grafite-2);border-top:2px solid var(--ambar);padding-bottom:env(safe-area-inset-bottom);display:grid;grid-template-columns:repeat(5,1fr)}
+  .aba{flex-direction:column;gap:3px;border:0;border-radius:0;top:0;background:none;padding:9px 2px 8px;font-size:11px;font-weight:600;white-space:nowrap;letter-spacing:-.01em}
+  .aba svg{width:22px;height:22px}
+  .aba[aria-selected="true"]{background:none;color:var(--ambar)}
+  .aba[aria-selected="true"]::before{content:"";position:absolute;top:-2px;left:22%;right:22%;height:3px;background:var(--ambar);border-radius:0 0 3px 3px}
+  .painel{padding:24px 0 40px}
+  .placa{padding:10px}
+  .placa::before{padding:10px;background:repeating-linear-gradient(-45deg,var(--grafite) 0 12px,var(--ambar) 12px 24px)}
+  .placa-miolo{padding:24px 18px}
+  .placa .btn{width:100%}
+  .grade{grid-template-columns:1fr}
+  .filtros{flex-wrap:nowrap;overflow-x:auto;margin-inline:-18px;padding-inline:18px;scrollbar-width:none}
+  .filtros::-webkit-scrollbar{display:none}
+  .filtro{flex:none}
+  .modos,.razoes{grid-template-columns:1fr}
+  .faixa{grid-template-columns:1fr}
+  .contato-chamada{padding:24px}
+  .contato-chamada .btn{width:100%}
+}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.6.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6a2.7 2.7 0 0 0 1.8-1.3 2.2 2.2 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3z"/></symbol>
+  <symbol id="i-casa" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 11 12 4l9 7M5 10v10h5v-6h4v6h5V10"/></symbol>
+  <symbol id="i-livro" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 5a2 2 0 0 1 2-2h13v15H6a2 2 0 0 0-2 2zM4 20a2 2 0 0 0 2 2h13v-4M8 7h7M8 11h5"/></symbol>
+  <symbol id="i-passos" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4v16M5 6h9l-2 3 2 3H5"/><circle cx="17" cy="18" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="i-escudo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 3 5 6v5c0 4.5 3 8.3 7 10 4-1.7 7-5.5 7-10V6z"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-fone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-qr" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM14 14h2v2h-2zM18 14h2M14 18h2v2M18 18h2v2"/></symbol>
+  <symbol id="i-seta" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></symbol>
+  <!-- pictogramas dos cursos -->
+  <symbol id="c-altura" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M7 3v18M17 3v18M7 7h10M7 12h10M7 17h10"/></symbol>
+  <symbol id="c-confinado" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M5 8a7 3 0 0 0 14 0 7 3 0 0 0-14 0v9a7 3 0 0 0 14 0V8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M10 3h4v3h-4z"/></symbol>
+  <symbol id="c-maquina" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M5.3 18.7l2.1-2.1M16.6 7.4l2.1-2.1"/></symbol>
+  <symbol id="c-eletrica" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+  <symbol id="c-obra" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 17h18M5 17a7 7 0 0 1 14 0M10 10V6h4v4"/></symbol>
+  <symbol id="c-epi" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M8 3 4 6v14h16V6l-4-3M8 3c0 2 1.8 3 4 3s4-1 4-3M4 13h16"/></symbol>
+  <symbol id="c-cipa" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.5 6 5.5"/></symbol>
+  <symbol id="c-fogo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 21c4 0 7-2.7 7-6.6 0-4.4-4-6.4-4.8-10.4C11 6 9.6 8.8 10 11c-1.4-.6-2.2-2-2.4-3C5.8 9.6 5 12 5 14.4 5 18.3 8 21 12 21z"/></symbol>
+  <symbol id="c-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12h8M8 16h5"/></symbol>
+</svg>
+
+<header class="topo">
+  <div class="contido topo-linha">
+    <a class="marca" href="#inicio" aria-label="SafeSeg, ir para o início">
+      <img src="../assets/logo-sm.webp" alt="" width="160" height="124">
+      <b>SafeSeg<small>Segurança do Trabalho</small></b>
+    </a>
+    <nav class="abas" role="tablist" aria-label="Seções do site">
+      <button class="aba" role="tab" id="t-inicio" aria-controls="inicio" aria-selected="true"><svg><use href="#i-casa"/></svg>Início</button>
+      <button class="aba" role="tab" id="t-treinamentos" aria-controls="treinamentos" aria-selected="false" tabindex="-1"><svg><use href="#i-livro"/></svg>Treinamentos</button>
+      <button class="aba" role="tab" id="t-como-funciona" aria-controls="como-funciona" aria-selected="false" tabindex="-1"><svg><use href="#i-passos"/></svg>Como funciona</button>
+      <button class="aba" role="tab" id="t-sobre" aria-controls="sobre" aria-selected="false" tabindex="-1"><svg><use href="#i-escudo"/></svg>Sobre</button>
+      <button class="aba" role="tab" id="t-contato" aria-controls="contato" aria-selected="false" tabindex="-1"><svg><use href="#i-fone"/></svg>Contato</button>
+    </nav>
+    <a class="btn btn-wa" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20os%20treinamentos%20da%20SafeSeg" aria-label="Falar no WhatsApp"><svg><use href="#i-wa"/></svg><span>WhatsApp</span></a>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ INÍCIO ============ -->
+<section class="painel" id="inicio" role="tabpanel" aria-labelledby="t-inicio">
+  <div class="contido">
+    <div class="inicio">
+      <div class="placa"><div class="placa-miolo">
+        <h1>Segurança não é opcional.</h1>
+        <p>Treinamentos de Normas Regulamentadoras com instrutor presente do início ao fim. Na sua empresa ou em turma aberta, em Dois Vizinhos e região.</p>
+        <a class="btn btn-escuro" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20um%20or%C3%A7amento%20de%20treinamento"><svg><use href="#i-wa"/></svg>Pedir orçamento</a>
+      </div></div>
+      <div class="atalhos">
+        <a class="atalho" href="#treinamentos"><span class="ic"><svg><use href="#i-livro"/></svg></span><span class="txt"><b>Ver os treinamentos</b>NR-35, NR-33, NR-12, NR-10 e mais</span><svg class="seta"><use href="#i-seta"/></svg></a>
+        <a class="atalho" href="https://safesegtreinamentos.github.io/Central/validador/"><span class="ic"><svg><use href="#i-qr"/></svg></span><span class="txt"><b>Validar um certificado</b>Pelo QR Code ou CPF do aluno</span><svg class="seta"><use href="#i-seta"/></svg></a>
+        <a class="atalho" href="/loja/"><span class="ic"><svg><use href="#i-passos"/></svg></span><span class="txt"><b>Cursos online</b>Matrícula na hora, sem esperar turma</span><svg class="seta"><use href="#i-seta"/></svg></a>
+        <a class="atalho" href="https://safesegtreinamentos.github.io/Central/"><span class="ic"><svg><use href="#i-escudo"/></svg></span><span class="txt"><b>Portal do cliente</b>Certificados e funcionários da sua empresa</span><svg class="seta"><use href="#i-seta"/></svg></a>
+      </div>
+    </div>
+    <div class="faixa">
+      <div><b>Instrutor presente</b><span>Do começo ao fim do curso</span></div>
+      <div><b>Certificado com QR Code</b><span>Validação pública por CPF</span></div>
+      <div><b>Turma fechada ou aberta</b><span>Na sua empresa ou na nossa</span></div>
+      <div><b>Dois Vizinhos, PR</b><span>Atendimento em toda a região</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TREINAMENTOS ============ -->
+<section class="painel" id="treinamentos" role="tabpanel" aria-labelledby="t-treinamentos" hidden>
+  <div class="contido">
+    <h2 class="titulo">Treinamentos</h2>
+    <p class="intro">Carga horária, conteúdo e material seguem a NR de cada curso. Toque em "O que você aprende" para ver o conteúdo.</p>
+    <div class="filtros" role="group" aria-label="Filtrar treinamentos">
+      <button class="filtro" aria-pressed="true" data-f="todos">Todos</button>
+      <button class="filtro" aria-pressed="false" data-f="risco">Riscos graves</button>
+      <button class="filtro" aria-pressed="false" data-f="industria">Indústria e obra</button>
+      <button class="filtro" aria-pressed="false" data-f="emergencia">Emergência</button>
+      <button class="filtro" aria-pressed="false" data-f="gestao">Gestão e documentos</button>
+    </div>
+    <ul class="grade" id="grade"></ul>
+    <div class="online">
+      <p><b>Precisa de um curso online agora?</b> Na loja você faz a matrícula na hora e começa sem esperar turma.</p>
+      <a class="btn btn-ambar" href="/loja/">Ver cursos online</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMO FUNCIONA ============ -->
+<section class="painel" id="como-funciona" role="tabpanel" aria-labelledby="t-como-funciona" hidden>
+  <div class="contido">
+    <h2 class="titulo">Do primeiro contato ao certificado</h2>
+    <p class="intro">Você fala direto com quem vai dar o treinamento.</p>
+    <ol class="trilho">
+      <li><div><h3>Você chama no WhatsApp</h3><p>Conta qual treinamento precisa e quantas pessoas vão fazer.</p></div></li>
+      <li><div><h3>Recebe a proposta</h3><p>Valor, carga horária e data combinados com você.</p></div></li>
+      <li><div><h3>O treinamento acontece</h3><p>Na sua empresa ou em turma aberta, com prática quando a norma exige.</p></div></li>
+      <li><div><h3>Certificado com QR Code</h3><p>Emitido para cada aluno e conferível a qualquer momento, inclusive numa fiscalização.</p></div></li>
+    </ol>
+    <div class="modos">
+      <div><h3>Presencial</h3><p>Teoria e prática com o instrutor junto o tempo todo.</p></div>
+      <div><h3>Semipresencial</h3><p>Teoria à distância e prática presencial, quando a norma permite.</p></div>
+      <div><h3>Online</h3><p>Parte teórica à distância nas NRs que autorizam.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE ============ -->
+<section class="painel" id="sobre" role="tabpanel" aria-labelledby="t-sobre" hidden>
+  <div class="contido">
+    <div class="sobre">
+      <img src="../assets/logo-hero.webp" alt="Emblema SafeSeg Segurança do Trabalho" width="440" height="340" loading="lazy">
+      <div>
+        <h2 class="titulo">Quem faz a SafeSeg</h2>
+        <p>A SafeSeg nasceu da ideia de que segurança do trabalho feita pela metade não protege ninguém, só cria a ilusão de conformidade. Por trás de cada certificado tem um instrutor que esteve presente, avaliou o risco de verdade e assina aquilo que ensinou.</p>
+        <p>Atendemos pequenas, médias e grandes empresas, com escritório em Dois Vizinhos, PR.</p>
+      </div>
+    </div>
+    <div class="razoes">
+      <div><h3>Instrutor presente do começo ao fim</h3><p>Quem assina o certificado é quem esteve com a sua equipe.</p></div>
+      <div><h3>Conteúdo do seu risco real</h3><p>Exemplos e prática montados com base na operação da sua empresa.</p></div>
+      <div><h3>Validação pública</h3><p>QR Code e consulta por CPF, fácil de comprovar numa fiscalização ou integração.</p></div>
+      <div><h3>Turma fechada ou aberta</h3><p>Levamos o treinamento até você ou você inscreve um colaborador na próxima turma.</p></div>
+    </div>
+    <ul class="setores" aria-label="Setores atendidos">
+      <li>Construção</li><li>Metalurgia</li><li>Agronegócio</li><li>Transporte</li><li>Madeireiro</li><li>E qualquer outro ramo</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ CONTATO ============ -->
+<section class="painel" id="contato" role="tabpanel" aria-labelledby="t-contato" hidden>
+  <div class="contido contato">
+    <div class="contato-chamada">
+      <h2 class="titulo">Vamos agendar seu treinamento</h2>
+      <p>Mande uma mensagem com o treinamento e o número de pessoas. A resposta vem com proposta e datas.</p>
+      <a class="btn btn-escuro" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20agendar%20um%20treinamento"><svg><use href="#i-wa"/></svg>Chamar no WhatsApp</a>
+    </div>
+    <div>
+      <ul class="canais">
+        <li><a href="https://wa.me/5546999203945"><span>WhatsApp</span><b>(46) 99920-3945</b></a></li>
+        <li><a href="mailto:contato@safeseg.eng.br"><span>E-mail</span><b>contato@safeseg.eng.br</b></a></li>
+        <li><a href="https://instagram.com/safeseg.seguranca"><span>Instagram</span><b>@safeseg.seguranca</b></a></li>
+        <li><div><span>Escritório</span><b>Dois Vizinhos, PR</b></div></li>
+      </ul>
+      <a class="valida" href="https://safesegtreinamentos.github.io/Central/validador/">
+        <img src="../assets/qr-validador.svg" alt="">
+        <span class="txt"><b>Validar um certificado</b>Aponte a câmera para o QR Code ou toque aqui para buscar pelo CPF.</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div class="contido">
+    <p>© <span id="ano">2026</span> SafeSeg Segurança do Trabalho</p>
+    <nav aria-label="Links do rodapé">
+      <a href="/loja/">Cursos online</a>
+      <a href="https://safesegtreinamentos.github.io/Central/validador/">Validar certificado</a>
+      <a href="https://safesegtreinamentos.github.io/Central/">Portal do cliente</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+const WA='https://wa.me/5546999203945?text=';
+const cursos=[
+ {nr:'NR-35',nome:'Trabalho em Altura',ic:'altura',cat:'risco',txt:'Atividades acima de 2 metros com risco de queda. Formação e reciclagem.',it:['Análise de risco e permissão de trabalho','Sistemas de ancoragem e cinto paraquedista','Inspeção dos equipamentos','Noções de resgate e primeiros socorros']},
+ {nr:'NR-33',nome:'Espaços Confinados',ic:'confinado',cat:'risco',txt:'Trabalhadores autorizados, vigias e supervisores de entrada.',it:['Reconhecimento de espaço confinado','Monitoramento da atmosfera e ventilação','Permissão de entrada e trabalho (PET)','Procedimentos de emergência e resgate']},
+ {nr:'NR-10',nome:'Segurança em Eletricidade',ic:'eletrica',cat:'risco',txt:'Serviços em instalações elétricas com prevenção de choque e arco elétrico.',it:['Riscos elétricos e medidas de controle','Desenergização e bloqueio','EPI e EPC para eletricidade','Primeiros socorros em choque elétrico']},
+ {nr:'NR-12',nome:'Máquinas e Equipamentos',ic:'maquina',cat:'industria',txt:'Operação segura e bloqueio de energia (LOTO) em máquinas e linhas.',it:['Zonas de perigo e proteções','Dispositivos de segurança e parada de emergência','Bloqueio e etiquetagem (LOTO)','Prática na máquina da própria empresa']},
+ {nr:'NR-18',nome:'Construção Civil',ic:'obra',cat:'industria',txt:'Condições de trabalho no canteiro de obras.',it:['Organização do canteiro','Andaimes e plataformas','Proteções coletivas','Riscos de cada etapa da obra']},
+ {nr:'NR-06',nome:'Uso de EPI',ic:'epi',cat:'industria',txt:'Escolha, uso correto e conservação dos equipamentos de proteção.',it:['Obrigações da empresa e do trabalhador','EPI certo para cada risco','Uso, guarda e conservação','Certificado de Aprovação (CA)']},
+ {nr:'Brigada',nome:'Brigada de Incêndio',ic:'fogo',cat:'emergencia',txt:'Prevenção e combate a princípio de incêndio, abandono e primeiros socorros.',it:['Classes de fogo e extintores','Combate a princípio de incêndio','Abandono de área','Primeiros socorros']},
+ {nr:'NR-05',nome:'CIPA',ic:'cipa',cat:'gestao',txt:'Formação dos membros da Comissão Interna de Prevenção de Acidentes.',it:['Atribuições da CIPA','Mapa de riscos','Investigação de acidentes','Reuniões e plano de trabalho']},
+ {nr:'PGR',nome:'Apoio em PGR, PCMSO e LTCAT',ic:'doc',cat:'gestao',txt:'Levantamento de riscos em campo e organização da documentação de saúde e segurança.',it:['Visita e levantamento dos riscos','Inventário de riscos e plano de ação','Organização dos documentos obrigatórios'],btn:'Falar sobre isso'}
+];
+const grade=document.getElementById('grade');
+grade.innerHTML=cursos.map(c=>`
+  <li class="curso" data-cat="${c.cat}">
+    <div class="curso-topo"><span class="ic"><svg aria-hidden="true"><use href="#c-${c.ic}"/></svg></span><span class="curso-nr">${c.nr}</span></div>
+    <h3>${c.nome}</h3>
+    <p>${c.txt}</p>
+    <details><summary>O que você aprende</summary><ul>${c.it.map(i=>`<li>${i}</li>`).join('')}</ul></details>
+    <a class="btn btn-wa pedir" href="${WA+encodeURIComponent('Olá, quero um orçamento do treinamento '+c.nr+' '+c.nome)}"><svg><use href="#i-wa"/></svg>${c.btn||'Pedir orçamento'}</a>
+  </li>`).join('');
+
+document.querySelectorAll('.filtro').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.filtro').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  const f=b.dataset.f;
+  grade.querySelectorAll('.curso').forEach(c=>c.hidden=!(f==='todos'||c.dataset.cat===f));
+}));
+
+/* abas com endereço (#treinamentos etc.) para o botão voltar e links diretos funcionarem */
+const abas=[...document.querySelectorAll('.aba')];
+const ids=abas.map(a=>a.getAttribute('aria-controls'));
+function abrir(id,foco){
+  if(!ids.includes(id)) id='inicio';
+  abas.forEach(a=>{const on=a.getAttribute('aria-controls')===id;a.setAttribute('aria-selected',on);a.tabIndex=on?0:-1;if(on&&foco)a.focus();});
+  ids.forEach(i=>document.getElementById(i).hidden=i!==id);
+  requestAnimationFrame(()=>window.scrollTo(0,0));
+}
+abas.forEach((a,i)=>{
+  a.addEventListener('click',()=>{location.hash=a.getAttribute('aria-controls');});
+  a.addEventListener('keydown',e=>{
+    const d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0; if(!d)return;
+    const n=abas[(i+d+abas.length)%abas.length]; location.hash=n.getAttribute('aria-controls'); n.focus();
+  });
+});
+addEventListener('hashchange',()=>abrir(location.hash.slice(1)));
+abrir(location.hash.slice(1));
+document.getElementById('ano').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
