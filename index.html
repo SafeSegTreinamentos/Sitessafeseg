@@ -228,6 +228,11 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   <symbol id="c-cipa" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="9" r="2.4" fill="none" stroke="currentColor" stroke-width="1.8"/><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M15 14.5c3 0 6 1.5 6 5.5"/></symbol>
   <symbol id="c-fogo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 21c4 0 7-2.7 7-6.6 0-4.4-4-6.4-4.8-10.4C11 6 9.6 8.8 10 11c-1.4-.6-2.2-2-2.4-3C5.8 9.6 5 12 5 14.4 5 18.3 8 21 12 21z"/></symbol>
   <symbol id="c-doc" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 4h6v3H9zM7 5H5v16h14V5h-2M8 12h8M8 16h5"/></symbol>
+  <symbol id="c-empilhadeira" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 4v14M3 15h4M9 18V9h5l3 5v4M9 13h8"/><circle cx="10.5" cy="18.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="18.5" r="1.8" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="c-gancho" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M3 4h18M12 4v6M10 10h4v3M12 13v2a3 3 0 1 1-3 3"/></symbol>
+  <symbol id="c-paleteira" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M6 3l3 10M9 13h11v4H6M3 17h3"/><circle cx="8" cy="19" r="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="19" r="1.6" fill="none" stroke="currentColor" stroke-width="1.8"/></symbol>
+  <symbol id="c-solda" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 20 14 10M14 10l3-3M16 13l2 1M18 9l2-1M13 6l-1-2M17 4l1-1"/></symbol>
+  <symbol id="c-carro" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M4 16v-4l2-5h12l2 5v4zM4 12h16M4 16v2M20 16v2"/><circle cx="7.5" cy="14" r=".8" fill="currentColor"/><circle cx="16.5" cy="14" r=".8" fill="currentColor"/></symbol>
 </svg>
 
 <header class="topo">
@@ -260,7 +265,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
         <a class="btn btn-escuro" href="https://wa.me/5546999203945?text=Ol%C3%A1%2C%20quero%20um%20or%C3%A7amento%20de%20treinamento"><svg><use href="#i-wa"/></svg>Pedir orçamento</a>
       </div></div>
       <div class="atalhos">
-        <a class="atalho" href="#treinamentos"><span class="ic"><svg><use href="#i-livro"/></svg></span><span class="txt"><b>Ver os treinamentos</b>NR-35, NR-33, NR-12, NR-10 e mais</span><svg class="seta"><use href="#i-seta"/></svg></a>
+        <a class="atalho" href="#treinamentos"><span class="ic"><svg><use href="#i-livro"/></svg></span><span class="txt"><b>Ver os treinamentos</b>NR-35, NR-33, NR-11, NR-10 e mais</span><svg class="seta"><use href="#i-seta"/></svg></a>
         <a class="atalho" href="/portal/"><span class="ic"><svg><use href="#i-pessoa"/></svg></span><span class="txt"><b>Portal do cliente</b>Certificados e funcionários da sua empresa</span><svg class="seta"><use href="#i-seta"/></svg></a>
         <a class="atalho" href="https://safesegtreinamentos.github.io/Central/validador/"><span class="ic"><svg><use href="#i-qr"/></svg></span><span class="txt"><b>Validar um certificado</b>Pelo QR Code ou CPF do aluno</span><svg class="seta"><use href="#i-seta"/></svg></a>
         <a class="atalho" href="/loja/"><span class="ic"><svg><use href="#i-passos"/></svg></span><span class="txt"><b>Cursos online</b>Matrícula na hora, sem esperar turma</span><svg class="seta"><use href="#i-seta"/></svg></a>
@@ -284,6 +289,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
       <button class="filtro" aria-pressed="true" data-f="todos">Todos</button>
       <button class="filtro" aria-pressed="false" data-f="risco">Riscos graves</button>
       <button class="filtro" aria-pressed="false" data-f="industria">Indústria e obra</button>
+      <button class="filtro" aria-pressed="false" data-f="cargas">Cargas e veículos</button>
       <button class="filtro" aria-pressed="false" data-f="emergencia">Emergência</button>
       <button class="filtro" aria-pressed="false" data-f="gestao">Gestão e documentos</button>
     </div>
@@ -379,12 +385,17 @@ const cursos=[
  {nr:'NR-35',nome:'Trabalho em Altura',ic:'altura',cat:'risco',txt:'Atividades acima de 2 metros com risco de queda. Formação e reciclagem.',it:['Análise de risco e permissão de trabalho','Sistemas de ancoragem e cinto paraquedista','Inspeção dos equipamentos','Noções de resgate e primeiros socorros']},
  {nr:'NR-33',nome:'Espaços Confinados',ic:'confinado',cat:'risco',txt:'Trabalhadores autorizados, vigias e supervisores de entrada.',it:['Reconhecimento de espaço confinado','Monitoramento da atmosfera e ventilação','Permissão de entrada e trabalho (PET)','Procedimentos de emergência e resgate']},
  {nr:'NR-10',nome:'Segurança em Eletricidade',ic:'eletrica',cat:'risco',txt:'Serviços em instalações elétricas com prevenção de choque e arco elétrico.',it:['Riscos elétricos e medidas de controle','Desenergização e bloqueio','EPI e EPC para eletricidade','Primeiros socorros em choque elétrico']},
+ {nr:'NR-34',nome:'Trabalho a Quente',ic:'solda',cat:'risco',txt:'Solda, corte e esmerilhamento com prevenção de incêndio e explosão.',it:['Riscos de solda, corte e esmerilhamento','Permissão de trabalho a quente','Observador e prevenção de incêndio','Proteção da área e EPI']},
  {nr:'NR-12',nome:'Máquinas e Equipamentos',ic:'maquina',cat:'industria',txt:'Operação segura e bloqueio de energia (LOTO) em máquinas e linhas.',it:['Zonas de perigo e proteções','Dispositivos de segurança e parada de emergência','Bloqueio e etiquetagem (LOTO)','Prática na máquina da própria empresa']},
+ {nr:'NR-11',nome:'Operador de Empilhadeira',ic:'empilhadeira',cat:'cargas',txt:'Formação e reciclagem de operadores, com prova prática na empilhadeira.',it:['Tipos e partes da empilhadeira','Inspeção diária com checklist','Estabilidade, capacidade e centro de gravidade','Prova prática de operação']},
+ {nr:'NR-11',nome:'Operador de Ponte Rolante',ic:'gancho',cat:'cargas',txt:'Movimentação segura de cargas suspensas com ponte rolante e talhas.',it:['Componentes e dispositivos de segurança','Cintas, cabos e acessórios de içamento','Sinalização e comunicação com o ajudante','Prática de movimentação de carga']},
+ {nr:'NR-11',nome:'Operador de Transpaleteira',ic:'paleteira',cat:'cargas',txt:'Uso seguro de transpaleteira manual e elétrica na movimentação de paletes.',it:['Tipos de transpaleteira','Inspeção antes do uso','Movimentação e empilhamento seguros','Prática operacional']},
  {nr:'NR-18',nome:'Construção Civil',ic:'obra',cat:'industria',txt:'Condições de trabalho no canteiro de obras.',it:['Organização do canteiro','Andaimes e plataformas','Proteções coletivas','Riscos de cada etapa da obra']},
  {nr:'NR-06',nome:'Uso de EPI',ic:'epi',cat:'industria',txt:'Escolha, uso correto e conservação dos equipamentos de proteção.',it:['Obrigações da empresa e do trabalhador','EPI certo para cada risco','Uso, guarda e conservação','Certificado de Aprovação (CA)']},
+ {nr:'Trânsito',nome:'Direção Defensiva',ic:'carro',cat:'cargas',txt:'Para motoristas e colaboradores que dirigem veículos da empresa.',it:['Elementos da direção defensiva','Condições adversas de via, clima e veículo','Distância de segurança e frenagem','Prevenção de acidentes com veículos da frota']},
  {nr:'Brigada',nome:'Brigada de Incêndio',ic:'fogo',cat:'emergencia',txt:'Prevenção e combate a princípio de incêndio, abandono e primeiros socorros.',it:['Classes de fogo e extintores','Combate a princípio de incêndio','Abandono de área','Primeiros socorros']},
  {nr:'NR-05',nome:'CIPA',ic:'cipa',cat:'gestao',txt:'Formação dos membros da Comissão Interna de Prevenção de Acidentes.',it:['Atribuições da CIPA','Mapa de riscos','Investigação de acidentes','Reuniões e plano de trabalho']},
- {nr:'PGR',nome:'Apoio em PGR, PCMSO e LTCAT',ic:'doc',cat:'gestao',txt:'Levantamento de riscos em campo e organização da documentação de saúde e segurança.',it:['Visita e levantamento dos riscos','Inventário de riscos e plano de ação','Organização dos documentos obrigatórios'],btn:'Falar sobre isso'}
+ {nr:'PGR',nome:'Elaboração do PGR',ic:'doc',cat:'gestao',txt:'Programa de Gerenciamento de Riscos feito a partir de visita e levantamento em campo, com responsável técnico.',it:['Visita e levantamento dos riscos','Inventário de riscos','Plano de ação com prazos','Atualização quando a operação muda']}
 ];
 const grade=document.getElementById('grade');
 grade.innerHTML=cursos.map(c=>`
@@ -393,7 +404,7 @@ grade.innerHTML=cursos.map(c=>`
     <h3>${c.nome}</h3>
     <p>${c.txt}</p>
     <details><summary>O que você aprende</summary><ul>${c.it.map(i=>`<li>${i}</li>`).join('')}</ul></details>
-    <a class="btn btn-wa pedir" href="${WA+encodeURIComponent('Olá, quero um orçamento do treinamento '+c.nr+' '+c.nome)}"><svg><use href="#i-wa"/></svg>${c.btn||'Pedir orçamento'}</a>
+    <a class="btn btn-wa pedir" href="${WA+encodeURIComponent('Olá, quero um orçamento do treinamento '+c.nr+(c.nr===c.nome?'':' '+c.nome))}"><svg><use href="#i-wa"/></svg>${c.btn||'Pedir orçamento'}</a>
   </li>`).join('');
 
 document.querySelectorAll('.filtro').forEach(b=>b.addEventListener('click',()=>{
