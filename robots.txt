@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://www.safeseg.eng.br/sitemap.xml
